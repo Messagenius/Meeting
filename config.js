@@ -780,17 +780,18 @@ var config = {
     // Message to show the users. Example: 'The service will be down for
     // maintenance at 01:00 AM GMT,
     // noticeMessage: '',
+    calendarEnabled: true,
 
     // Enables calendar integration, depends on googleApiApplicationClientID
     // and microsoftApiApplicationClientID
-    // enableCalendarIntegration: false,
+    enableCalendarIntegration: true,
 
     // Whether to notify when the conference is terminated because it was destroyed.
     // notifyOnConferenceDestruction: true,
 
     // The client id for the google APIs used for the calendar integration, youtube livestreaming, etc.
-    // googleApiApplicationClientID: '<client_id>',
-
+    googleApiApplicationClientID: '590796445758-2stknbg4evs62cm8kmsenm3v42ftva0p.apps.googleusercontent.com',
+    //microsoftApiApplicationClientID: 'YOUR_MICROSOFT_OAUTH_CLIENT_ID',
     // Configs for prejoin page.
     // prejoinConfig: {
     //     // When 'true', it shows an intermediate page before joining, where the user can configure their devices.
@@ -825,7 +826,7 @@ var config = {
     // deemed unsafe (due to the simplicity in the name) and a password is not
     // set or the lobby is not enabled.
     // enableInsecureRoomNameWarning: false,
-
+   
     // Array with avatar URL prefixes that need to use CORS.
     // corsAvatarURLs: [ 'https://www.gravatar.com/avatar/' ],
 

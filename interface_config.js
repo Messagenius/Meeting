@@ -9,7 +9,8 @@
  */
 
 var interfaceConfig = {
-    APP_NAME: 'meetings',
+    APP_NAME: 'Meetings',
+    appName: 'Meetings',
     AUDIO_LEVEL_PRIMARY_COLOR: 'rgba(255,255,255,0.4)',
     AUDIO_LEVEL_SECONDARY_COLOR: 'rgba(255,255,255,0.2)',
 
@@ -54,7 +55,6 @@ var interfaceConfig = {
      * displayed on browsers that can support it.
      */
     DISABLE_VIDEO_BACKGROUND: false,
-
     DISPLAY_WELCOME_FOOTER: false,
     DISPLAY_WELCOME_PAGE_ADDITIONAL_CARD: false,
     DISPLAY_WELCOME_PAGE_CONTENT: false,
@@ -190,7 +190,7 @@ var interfaceConfig = {
      */
     // APP_SCHEME: 'org.jitsi.meet',
 
-    // NATIVE_APP_NAME: 'Jitsi Meet',
+    NATIVE_APP_NAME: 'Meetings',
 
     /**
      * Hide the logo on the deep linking pages.
