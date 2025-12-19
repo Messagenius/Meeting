@@ -2,7 +2,7 @@ FROM jitsi/web:stable-10590
 
 # Custom built assets
 COPY css/ /usr/share/jitsi-meet/css/
-COPY libs/ /usr/share/jitsi-meet/libs/
+#COPY libs/ /usr/share/jitsi-meet/libs/
 COPY sounds/ /usr/share/jitsi-meet/sounds/
 COPY images/ /usr/share/jitsi-meet/images/
 COPY fonts/ /usr/share/jitsi-meet/fonts/
