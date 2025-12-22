@@ -75,6 +75,12 @@ kubectl rollout restart deployment/jitsi-web -n jitsi
 
 ### **Access Meeting Platform**
 
+## TO Treat Insecure origins treated as secure
+visit
+chrome://flags/
+
+and add url in  Insecure origins treated as secure enbale it and save relod the page , and access teh below url
+
 **Production URL:**
 http://77.42.69.64:30080/
 
