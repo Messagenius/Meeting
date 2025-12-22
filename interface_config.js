@@ -14,6 +14,30 @@ var interfaceConfig = {
     AUDIO_LEVEL_PRIMARY_COLOR: 'rgba(255,255,255,0.4)',
     AUDIO_LEVEL_SECONDARY_COLOR: 'rgba(255,255,255,0.2)',
 
+
+     // CUSTOM CSS - This loads your css/custom.css file
+    EXTERNAL_VIDEO_TRACKS_ENABLED: false,
+    
+    // Load custom CSS via href
+    fileNameToURI: function(filename) {
+        // Load custom.css from your assets
+        if(filename === 'custom.css') {
+            return '/css/custom.css';
+        }
+        // Default Jitsi behavior for other files
+        return window.location.origin + '/libs/' + filename;
+    },
+
+    // UI Customizations
+    APP_NAME: "Messagenius Meetings",
+    DEFAULT_WELCOME_PAGE_LOGO_URL: "images/messagenius-logo.png",
+    BRAND_WATERMARK_LINK: "https://messagenius.com",
+    SHOW_JITSI_WATERMARK: false,
+    SHOW_BRAND_WATERMARK: true,
+    
+    // Theme colors
+    MAIN_COLOR_PRIMARY: "#0052cc",
+    MAIN_COLOR_SECONDARY: "#0052cc"
     /**
      * A UX mode where the last screen share participant is automatically
      * pinned. Valid values are the string "remote-only" so remote participants
