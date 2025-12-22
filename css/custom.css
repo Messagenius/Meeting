@@ -14,16 +14,15 @@ body {
 
 
 /* css/custom.css - ACTIVE STYLES */
+/* Messagenius Custom Styles - FULL BRANDING */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 /* 1. Custom Font */
-* {
-    font-family: 'Inter', sans-serif !important;
-}
+* { font-family: 'Inter', sans-serif !important; }
 
-/* 2. Welcome Page Background */
-.welcome-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+/* 2. Welcome Page - Purple Gradient */
+.welcome-page { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; 
     min-height: 100vh;
 }
 
@@ -43,14 +42,32 @@ button, .button {
     font-weight: 600 !important;
 }
 
-/* 5. Toolbar */
+/* 5. Glass Toolbar */
 .toolbox {
     background: rgba(255,255,255,0.95) !important;
     backdrop-filter: blur(20px) !important;
     box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
 }
 
-/* 6. Hide Jitsi Branding */
-.jitsi-watermark, .powered-by {
-    display: none !important;
+/* 6. HIDE Jitsi Branding */
+.jitsi-watermark, .powered-by { display: none !important; }
+
+/* 7. MESSAGENIUS WATERMARK - REPLACE JITSI! */
+.watermark.leftwatermark,
+.watermark.leftwatermark.no-margin {
+    background-image: url('/images/messagenius-logo.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 120px !important;
+    height: 40px !important;
+}
+
+/* 8. Brand Link Styling */
+a[href="https://messagenius.com/"] .watermark {
+    opacity: 0.9 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+a[href="https://messagenius.com/"] .watermark:hover {
+    opacity: 1 !important;
 }
