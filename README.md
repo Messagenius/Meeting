@@ -1,87 +1,166 @@
-# <p align="center">Jitsi Meet</p>
+# Messagenius Meetings - Custom Jitsi Web
 
-Jitsi Meet is a set of Open Source projects which empower users to use and deploy
-video conferencing platforms with state-of-the-art video quality and features.
+Custom branded Jitsi Meet web interface with automated deployment to Hetzner Cloud Kubernetes cluster.
 
-<hr />
+## 🚀 What This Repository Does
 
-<p align="center">
-<img src="https://raw.githubusercontent.com/jitsi/jitsi-meet/master/readme-img1.png" width="900" />
-</p>
+This repository automatically builds and deploys a custom Jitsi Meet web container to Hetzner Cloud whenever code is pushed to the `main` branch.
 
-<hr />
+**Live Meeting Platform:** http://77.42.69.64:30080/
 
-Amongst others here are the main features Jitsi Meet offers:
+## 🏗️ How It Works
 
-* Support for all current browsers
-* Mobile applications
-* Web and native SDKs for integration
-* HD audio and video
-* Content sharing
-* Raise hand and reactions
-* Chat with private conversations
-* Polls
-* Virtual backgrounds
+### **1. GitHub Actions CI/CD Pipeline**
 
-And many more!
+When you push code to `main` branch, the automated pipeline runs:
 
-## Using Jitsi Meet
+git push → GitHub Actions → Build Docker → Push to Hub → Deploy Hetzner → Live
 
-Using Jitsi Meet is straightforward, as it's browser based. Head over to [meet.jit.si](https://meet.jit.si) and give it a try. It's scalable and free to use. All you need is a Google, Facebook or GitHub account in order to start a meeting. All browsers are supported!
 
-Using mobile? No problem, you can either use your mobile web browser or our fully-featured
-mobile apps:
 
-| Android | Android (F-Droid) | iOS |
-|:-:|:-:|:-:|
-| [<img src="resources/img/google-play-badge.png" height="50">](https://play.google.com/store/apps/details?id=org.jitsi.meet) | [<img src="resources/img/f-droid-badge.png" height="50">](https://f-droid.org/packages/org.jitsi.meet/) | [<img src="resources/img/appstore-badge.png" height="50">](https://itunes.apple.com/us/app/jitsi-meet/id1165103905) |
+**Pipeline Steps:**
+1. **Checkout Code** - Gets latest code from GitHub repository
+2. **Setup Docker Buildx** - Prepares multi-platform Docker build environment
+3. **Login to Docker Hub** - Authenticates to sanketnawale registry
+4. **Build & Push Image** - Creates and uploads `sanketnawale/meetings-web:latest`
+5. **Deploy to Hetzner** - Updates Kubernetes deployment on Hetzner Cloud
 
-If you are feeling adventurous and want to get an early scoop of the features as they are being
-developed you can also sign up for our open beta testing here:
+**Build Time:** ~2-3 minutes  
+**Total Deployment:** ~5 minutes from push to live
 
-* [Android](https://play.google.com/apps/testing/org.jitsi.meet)
-* [iOS](https://testflight.apple.com/join/isy6ja7S)
+### **2. Docker Image Build**
 
-## Running your own instance
+**Dockerfile Configuration:**
 
-If you'd like to run your own Jitsi Meet installation head over to the [handbook](https://jitsi.github.io/handbook/docs/devops-guide/) to get started.
+FROM jitsi/web:stable-10590
 
-We provide Debian packages and a comprehensive Docker setup to make deployments as simple as possible.
-Advanced users also have the possibility of building all the components from source.
+Custom assets
+COPY css/ /usr/share/jitsi-meet/css/
+COPY sounds/ /usr/share/jitsi-meet/sounds/
+COPY images/ /usr/share/jitsi-meet/images/
+COPY fonts/ /usr/share/jitsi-meet/fonts/
+COPY static/ /usr/share/jitsi-meet/static/
+COPY lang/ /usr/share/jitsi-meet/lang/
 
-You can check the latest releases [here](https://jitsi.github.io/handbook/docs/releases).
+Application files
+COPY app.js conference.js index.html title.html manifest.json pwa-worker.js /usr/share/jitsi-meet/
 
-## Jitsi as a Service
+Configuration
+COPY config.js interface_config.js /usr/share/jitsi-meet/
 
-If you like the branding capabilities of running your own instance but you'd like
-to avoid dealing with the complexity of monitoring, scaling and updates, JaaS might be
-for you.
 
-[8x8 Jitsi as a Service (JaaS)](https://jaas.8x8.vc) is an enterprise-ready video meeting platform that allows developers, organizations and businesses to easily build and deploy video solutions. With Jitsi as a Service we now give you all the power of Jitsi running on our global platform so you can focus on building secure and branded video experiences.
 
-## Documentation
+**Published to:** `sanketnawale/meetings-web:latest` on Docker Hub
 
-All the Jitsi Meet documentation is available in [the handbook](https://jitsi.github.io/handbook/).
+**Image includes:**
+- Custom Messagenius branding
+- Modified UI/UX
+- Calendar integration
+- Custom config and interface settings
 
-## Security
+### **3. Hetzner Cloud Deployment**
 
-For a comprehensive description of all Jitsi Meet's security aspects, please check [this link](https://jitsi.org/security).
+**Infrastructure:**
+- **Kubernetes Cluster:** Hetzner Cloud
+- **Namespace:** `jitsi`
+- **Service Type:** NodePort (Port 30080)
+- **Deployment:** `jitsi-web`
 
-For a detailed description of Jitsi Meet's End-to-End Encryption (E2EE) implementation,
-please check [this link](https://jitsi.org/e2ee-whitepaper/).
+**Update mechanism in Hetzner:**
+kubectl set image deployment/jitsi-web web=sanketnawale/meetings-web:latest -n jitsi
+kubectl rollout restart deployment/jitsi-web -n jitsi
 
-For information on reporting security vulnerabilities in Jitsi Meet, see [SECURITY.md](./SECURITY.md).
 
-## Contributing
+## 🔗 Using the Platform
 
-If you are looking to contribute to Jitsi Meet, first of all, thank you! Please
-see our [guidelines for contributing](CONTRIBUTING.md).
+### **Access Meeting Platform**
 
-<br />
-<br />
+**Production URL:**
+http://77.42.69.64:30080/
 
-<footer>
-<p align="center" style="font-size: smaller;">
-Built with ❤️ by the Jitsi team at <a href="https://8x8.com" target="_blank">8x8</a> and our community.
-</p>
-</footer>
+
+### **For Organization Members**
+
+**Start a new meeting:**
+http://77.42.69.64:30080/YourRoomName
+
+
+
+**Quick start:**
+1. Open: http://77.42.69.64:30080/
+2. Enter a room name (e.g., "team-standup")
+3. Click "Start Meeting"
+4. Share the URL with participants
+
+**Features:**
+- ✅ HD video/audio conferencing
+- ✅ Screen sharing
+- ✅ Chat and reactions
+- ✅ Recording capability
+- ✅ Virtual backgrounds
+- ✅ Password protection
+- ✅ Lobby mode
+- ✅ Calendar integration
+
+## 🛠️ Development & Deployment
+
+### **Making Changes**
+
+1. Clone repository
+git clone https://github.com/Messagenius/Meeting.git
+cd Meeting
+
+2. Make your changes
+Edit files: config.js, interface_config.js, CSS, images, etc.
+3. Test locally (optional)
+make dev
+
+Opens at http://localhost:8080
+4. Commit and push
+git add .
+git commit -m "Description of changes"
+git push origin main
+
+5. Automatic deployment happens!
+- GitHub Actions builds Docker image
+- Pushes to sanketnawale/meetings-web:latest
+- Updates Hetzner Kubernetes deployment
+- Live in ~5 minutes
+
+
+### **Monitor Deployment**
+
+**Check GitHub Actions:**
+https://github.com/Messagenius/Meeting/actions
+
+**Check Hetzner Kubernetes:**
+View pods
+kubectl get pods -n jitsi
+
+Check deployment status
+kubectl rollout status deployment/jitsi-web -n jitsi
+
+View recent events
+kubectl get events -n jitsi --sort-by='.lastTimestamp'
+
+Check logs
+kubectl logs -f deployment/jitsi-web -n jitsi
+
+Verify image version
+kubectl describe pod <pod-name> -n jitsi | grep Image:
+
+
+### **Manual Deployment (if needed)**
+
+Build image locally
+docker build -t sanketnawale/meetings-web:latest .
+
+Push to Docker Hub
+docker push sanketnawale/meetings-web:latest
+
+Update Hetzner deployment
+kubectl set image deployment/jitsi-web web=sanketnawale/meetings-web:latest -n jitsi
+
+Restart deployment
+kubectl rollout restart deployment/jitsi-web -n jitsi
+
