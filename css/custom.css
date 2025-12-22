@@ -11,3 +11,46 @@ body {
     background-image: url(images/messagenius-logo.png);
 }
 */
+
+
+/* css/custom.css - ACTIVE STYLES */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* 1. Custom Font */
+* {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* 2. Welcome Page Background */
+.welcome-page {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    min-height: 100vh;
+}
+
+/* 3. Logo Styling */
+.welcome-page .header-logo {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    height: 80px !important;
+}
+
+/* 4. Button Styling */
+button, .button {
+    background: linear-gradient(45deg, #0052cc, #0066ff) !important;
+    border-radius: 12px !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+/* 5. Toolbar */
+.toolbox {
+    background: rgba(255,255,255,0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+}
+
+/* 6. Hide Jitsi Branding */
+.jitsi-watermark, .powered-by {
+    display: none !important;
+}
