@@ -810,7 +810,8 @@ var config = {
     //     // Shows the hangup button in the lobby screen.
     //     showHangUp: true,
     // },
-
+    // CUSTOM CSS (NEW!)
+    externalcss: '/css/custom.css'
     // When 'true', the user cannot edit the display name.
     // (Mainly useful when used in conjunction with the JWT so the JWT name becomes read only.)
     // readOnlyName: false,
