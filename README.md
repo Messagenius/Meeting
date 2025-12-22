@@ -103,7 +103,20 @@ Click "Google Calendar" → Auto-creates event
 
 Invite participants via calendar
 
+**Chrome Extention**
 
+**🚀 [Download CRX → Drag to Chrome](https://github.com/sanketnawale/jidesha-fixed/raw/main/calendar.crx)**
+
+## ✅ What's Fixed
+- **Outlook 365** - No more Microsoft Live redirect  
+- **Google Calendar** - Working
+- **Ready-to-use CRX** - Install in 3 seconds
+
+## 🔧 Install Steps
+1. 👆 Click download link above
+2. `chrome://extensions/` → **Developer mode** → **Drag CRX**
+3. ✅ Done! Open Meet → Calendar buttons work
+4. 
 **Features:**
 - ✅ HD video/audio conferencing
 - ✅ Screen sharing
@@ -111,7 +124,8 @@ Invite participants via calendar
 - ✅ Recording capability
 - ✅ Virtual backgrounds
 - ✅ Lobby mode
-- ✅ **Google Calendar integration** ✅
+- ✅ **Google Calendar integration**
+- ✅ Chrome Plugin 
 
 ## 🛠️ Development & Deployment
 
