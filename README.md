@@ -110,7 +110,6 @@ Invite participants via calendar
 - ✅ Chat and reactions
 - ✅ Recording capability
 - ✅ Virtual backgrounds
-- ✅ Password protection
 - ✅ Lobby mode
 - ✅ **Google Calendar integration** ✅
 
