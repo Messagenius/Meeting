@@ -29,7 +29,7 @@ var interfaceConfig = {
     },
 
     // UI Customizations
-    APP_NAME: "Messagenius Meetings",
+    APP_NAME: "Meet",
     DEFAULT_WELCOME_PAGE_LOGO_URL: "images/messagenius-logo.png",
     BRAND_WATERMARK_LINK: "https://messagenius.com",
     SHOW_JITSI_WATERMARK: false,
