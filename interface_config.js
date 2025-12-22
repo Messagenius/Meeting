@@ -37,7 +37,7 @@ var interfaceConfig = {
     
     // Theme colors
     MAIN_COLOR_PRIMARY: "#0052cc",
-    MAIN_COLOR_SECONDARY: "#0052cc"
+    MAIN_COLOR_SECONDARY: "#0052cc",
     /**
      * A UX mode where the last screen share participant is automatically
      * pinned. Valid values are the string "remote-only" so remote participants
