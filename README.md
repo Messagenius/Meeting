@@ -6,7 +6,7 @@ Custom branded Jitsi Meet web interface with automated deployment to Hetzner Clo
 
 This repository automatically builds and deploys a custom Jitsi Meet web container to Hetzner Cloud whenever code is pushed to the `main` branch.
 
-**Live Meeting Platform:** http://77.42.69.64:30080/
+**Live Meeting Platform:** http://meetiing.duckdns.org:30080/
 
 ## 🏗️ How It Works
 
@@ -15,7 +15,6 @@ This repository automatically builds and deploys a custom Jitsi Meet web contain
 When you push code to `main` branch, the automated pipeline runs:
 
 git push → GitHub Actions → Build Docker → Push to Hub → Deploy Hetzner → Live
-
 
 
 **Pipeline Steps:**
@@ -53,9 +52,9 @@ COPY config.js interface_config.js /usr/share/jitsi-meet/
 **Published to:** `sanketnawale/meetings-web:latest` on Docker Hub
 
 **Image includes:**
-- Custom Messagenius branding
+- Custom Meetings branding
 - Modified UI/UX
-- Calendar integration
+- **Calendar integration** (Google OAuth)
 - Custom config and interface settings
 
 ### **3. Hetzner Cloud Deployment**
@@ -65,6 +64,7 @@ COPY config.js interface_config.js /usr/share/jitsi-meet/
 - **Namespace:** `jitsi`
 - **Service Type:** NodePort (Port 30080)
 - **Deployment:** `jitsi-web`
+- **Domain:** `meetiing.duckdns.org` (Auto IP updates)
 
 **Update mechanism in Hetzner:**
 kubectl set image deployment/jitsi-web web=sanketnawale/meetings-web:latest -n jitsi
@@ -73,30 +73,36 @@ kubectl rollout restart deployment/jitsi-web -n jitsi
 
 ## 🔗 Using the Platform
 
-### **Access Meeting Platform**
+### **Chrome Camera/Microphone Fix (HTTP Only)**
 
-## TO Treat Insecure origins treated as secure
-visit
-chrome://flags/
+Visit: chrome://flags/
 
-and add url in  Insecure origins treated as secure enbale it and save relod the page , and access teh below url
+Search: "Insecure origins treated as secure"
 
-**Production URL:**
-http://77.42.69.64:30080/
+Add: http://meetiing.duckdns.org:30080/
 
+Enable → Relaunch Chrome
+
+
+**Production URL:** http://meetiing.duckdns.org:30080/
 
 ### **For Organization Members**
 
-**Start a new meeting:**
-http://77.42.69.64:30080/YourRoomName
-
-
+**Start a new meeting:** http://meetiing.duckdns.org:30080/YourRoomName
 
 **Quick start:**
-1. Open: http://77.42.69.64:30080/
-2. Enter a room name (e.g., "team-standup")
+1. Open: http://meetiing.duckdns.org:30080/
+2. Enter room name (e.g., "team-standup")
 3. Click "Start Meeting"
-4. Share the URL with participants
+4. Share URL with participants
+
+**Calendar Integration:**
+Start room → ⋮ More → Settings → Integration → Calendar
+
+Click "Google Calendar" → Auto-creates event
+
+Invite participants via calendar
+
 
 **Features:**
 - ✅ HD video/audio conferencing
@@ -106,67 +112,43 @@ http://77.42.69.64:30080/YourRoomName
 - ✅ Virtual backgrounds
 - ✅ Password protection
 - ✅ Lobby mode
-- ✅ Calendar integration
+- ✅ **Google Calendar integration** ✅
 
 ## 🛠️ Development & Deployment
 
 ### **Making Changes**
 
-1. Clone repository
+Clone repository
 git clone https://github.com/Messagenius/Meeting.git
 cd Meeting
 
-2. Make your changes
-Edit files: config.js, interface_config.js, CSS, images, etc.
-3. Test locally (optional)
-make dev
+Make changes (config.js, CSS, images, etc.)
 
-Opens at http://localhost:8080
-4. Commit and push
+Test locally (optional)
+make dev # Opens http://localhost:8080
+
+Commit & push
 git add .
-git commit -m "Description of changes"
+git commit -m "Update calendar integration"
 git push origin main
 
-5. Automatic deployment happens!
-- GitHub Actions builds Docker image
-- Pushes to sanketnawale/meetings-web:latest
-- Updates Hetzner Kubernetes deployment
-- Live in ~5 minutes
+Auto-deploys to meetiing.duckdns.org:30080/ (~5 min)
 
 
 ### **Monitor Deployment**
 
-**Check GitHub Actions:**
-https://github.com/Messagenius/Meeting/actions
+**GitHub Actions:** https://github.com/Messagenius/Meeting/actions
 
-**Check Hetzner Kubernetes:**
-View pods
+**Hetzner Kubernetes:**
 kubectl get pods -n jitsi
-
-Check deployment status
 kubectl rollout status deployment/jitsi-web -n jitsi
-
-View recent events
-kubectl get events -n jitsi --sort-by='.lastTimestamp'
-
-Check logs
 kubectl logs -f deployment/jitsi-web -n jitsi
-
-Verify image version
 kubectl describe pod <pod-name> -n jitsi | grep Image:
 
+text
 
 ### **Manual Deployment (if needed)**
-
-Build image locally
 docker build -t sanketnawale/meetings-web:latest .
-
-Push to Docker Hub
 docker push sanketnawale/meetings-web:latest
-
-Update Hetzner deployment
 kubectl set image deployment/jitsi-web web=sanketnawale/meetings-web:latest -n jitsi
-
-Restart deployment
 kubectl rollout restart deployment/jitsi-web -n jitsi
-
