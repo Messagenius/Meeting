@@ -116,7 +116,7 @@ Invite participants via calendar
 1. 👆 Click download link above
 2. `chrome://extensions/` → **Developer mode** → **Drag CRX**
 3. ✅ Done! Open Meet → Calendar buttons work
-4. 
+
 **Features:**
 - ✅ HD video/audio conferencing
 - ✅ Screen sharing
