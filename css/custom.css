@@ -297,3 +297,19 @@ body.conference .mg-header {
     margin: 0 !important;
     border: none !important;
 }
+.mg-header-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;  /* space between button, logo, text */
+}
+
+.mg-logo-image {
+    height: 28px !important;
+    width: auto !important;
+}
+
+.mg-logo-text {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+}
