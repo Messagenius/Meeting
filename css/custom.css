@@ -56,13 +56,9 @@ button, .button {
 /* Completely neutralize old global watermark rule */
 .watermark.leftwatermark,
 .watermark.leftwatermark.no-margin {
-    background-image: url('/images/messagenius-logo.png') !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    width: 120px !important;
-    height: 40px !important;
+    width: auto !important;
+    height: auto !important;
 }
-
 
 
 /* 8. Brand Link Styling */
@@ -238,8 +234,13 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
 
 /* Logo image styling */
 .mg-logo-image {
-    display: block !important;
-    flex-shrink: 0 !important;
+    width: 32px !important;
+    height: 32px !important;
+    background-image: url('images/messagenius-logo.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    margin: 0 !important;
 }
 
 /* Text logo */
