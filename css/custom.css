@@ -1,73 +1,229 @@
-/* Messagenius Custom Styles */
-/* Add your custom CSS here */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&display=swap');
 
-/* Example customizations: */
-/*
+/* GOOGLE MEET OVERLAY - NO HTML STRUCTURE CHANGES */
+* {
+    font-family: 'Google Sans', Inter, -apple-system, sans-serif !important;
+}
+
+/* FULL PAGE GOOGLE MEET LAYOUT */
 body {
-    background-color: #f8f9fa;
+    background: linear-gradient(135deg, #f1f3f4 0%, #e8f0fe 100%) !important;
+    display: flex !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
 }
 
-.welcome-page .header-logo {
-    background-image: url(images/messagenius-logo.png);
-}
-*/
-
-
-/* css/custom.css - ACTIVE STYLES */
-/* Messagenius Custom Styles - FULL BRANDING */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-
-/* 1. Custom Font */
-* { font-family: 'Inter', sans-serif !important; }
-
-/* 2. Welcome Page - Purple Gradient */
-.welcome-page { 
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; 
-    min-height: 100vh;
+/* LEFT SIDEBAR - MEETINGS/CALENDAR */
+body::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 240px;
+    background: #fff !important;
+    border-right: 1px solid #dadce0 !important;
+    box-shadow: 0 1px 20px rgba(0,0,0,0.08) !important;
+    z-index: 1000;
 }
 
-/* 3. Logo Styling */
-.welcome-page .header-logo {
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    height: 80px !important;
+.sidebar-title::before {
+    content: 'Meetings';
+    position: fixed;
+    left: 24px;
+    top: 24px;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    color: #202124 !important;
+    z-index: 1001;
 }
 
-/* 4. Button Styling */
-button, .button {
-    background: linear-gradient(45deg, #0052cc, #0066ff) !important;
-    border-radius: 12px !important;
-    border: none !important;
+.new-meeting-btn::before {
+    content: '📹 New meeting';
+    position: fixed;
+    left: 24px;
+    top: 80px;
+    width: 192px;
+    height: 44px;
+    background: linear-gradient(135deg, #1a73e8, #1669c1) !important;
     color: white !important;
-    font-weight: 600 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px 20px !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px rgba(26,115,232,0.3) !important;
+    transition: all 0.2s !important;
 }
 
-/* 5. Glass Toolbar */
-.toolbox {
-    background: rgba(255,255,255,0.95) !important;
-    backdrop-filter: blur(20px) !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+.new-meeting-btn::before:hover {
+    background: #1557b0 !important;
+    transform: translateY(-1px) !important;
 }
 
-/* 6. HIDE Jitsi Branding */
+.calendar-link::before {
+    content: '📅 Calendar';
+    position: fixed;
+    left: 24px;
+    top: 140px;
+    width: 192px;
+    height: 44px;
+    color: #5f6368 !important;
+    font-size: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px 20px !important;
+    text-decoration: none !important;
+    border-radius: 8px !important;
+    transition: background 0.2s !important;
+}
+
+.calendar-link::before:hover {
+    background: #f8f9fa !important;
+}
+
+/* MAIN CONTENT - PUSH RIGHT */
+#react {
+    margin-left: 240px !important;
+    padding: 40px !important;
+    max-width: 800px !important;
+    margin: 40px auto !important;
+}
+
+/* GOOGLE MEET HEADER OVERLAY */
+#header::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 260px;
+    right: 0;
+    height: 80px;
+    background: transparent !important;
+    z-index: 999;
+}
+
+.meet-header::before {
+    content: 'Messagenius Meet';
+    position: fixed;
+    left: 320px;
+    top: 24px;
+    font-size: 48px !important;
+    font-weight: 400 !important;
+    color: #202124 !important;
+    line-height: 1.2 !important;
+    z-index: 1001;
+}
+
+.meet-subtitle::before {
+    content: 'Make meetings happen with one click';
+    position: fixed;
+    left: 320px;
+    top: 88px;
+    font-size: 16px !important;
+    color: #5f6368 !important;
+    z-index: 1001;
+}
+
+/* ENTER CODE PROMPT - GOOGLE MEET STYLE */
+input[type="text"] {
+    width: 100% !important;
+    max-width: 400px !important;
+    padding: 16px 20px !important;
+    border: 2px solid #dadce0 !important;
+    border-radius: 24px !important;
+    font-size: 16px !important;
+    font-family: 'Google Sans', sans-serif !important;
+    outline: none !important;
+    margin: 0 auto 16px !important;
+    display: block !important;
+}
+
+input[type="text"]:focus {
+    border-color: #1a73e8 !important;
+    box-shadow: 0 0 0 3px rgba(26,115,232,0.1) !important;
+}
+
+/* BUTTONS - GOOGLE MEET PRIMARY */
+button, .button {
+    background: #1a73e8 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    font-family: 'Google Sans', sans-serif !important;
+    padding: 14px 28px !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px rgba(26,115,232,0.3) !important;
+    transition: all 0.2s !important;
+    margin: 0 8px !important;
+}
+
+button:hover, .button:hover {
+    background: #1557b0 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 16px rgba(26,115,232,0.4) !important;
+}
+
+/* OUTLINED BUTTONS */
+button.outlined, .outlined {
+    background: white !important;
+    color: #1a73e8 !important;
+    border: 1px solid #1a73e8 !important;
+}
+
+button.outlined:hover, .outlined:hover {
+    background: #f8fbff !important;
+}
+
+/* CARDS - GOOGLE MEET STYLE */
+.welcome-page .card, .promo-card {
+    background: #fff !important;
+    border-radius: 24px !important;
+    padding: 40px !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+    margin-bottom: 32px !important;
+    text-align: center !important;
+}
+
+.action-item {
+    background: #fff !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    margin: 8px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    transition: all 0.2s !important;
+    cursor: pointer !important;
+}
+
+.action-item:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    body::before { width: 0 !important; }
+    #react { margin-left: 0 !important; padding: 20px !important; }
+    .meet-header::before { 
+        left: 20px !important; 
+        font-size: 32px !important; 
+        top: 16px !important;
+    }
+    .meet-subtitle::before { 
+        left: 20px !important; 
+        top: 64px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* HIDE JITSI BRANDING + MESSAGENIUS WATERMARK */
 .jitsi-watermark, .powered-by { display: none !important; }
-
-/* 7. MESSAGENIUS WATERMARK - REPLACE JITSI! */
-.watermark.leftwatermark,
-.watermark.leftwatermark.no-margin {
-    background-image: url('/images/messagenius-logo.png') !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    width: 120px !important;
+.watermark { 
+    background: url('images/messagenius-logo.png') no-repeat center/contain !important;
+    width: 120px !important; 
     height: 40px !important;
-}
-
-/* 8. Brand Link Styling */
-a[href="https://messagenius.com/"] .watermark {
-    opacity: 0.9 !important;
-    transition: opacity 0.3s ease !important;
-}
-
-a[href="https://messagenius.com/"] .watermark:hover {
-    opacity: 1 !important;
 }
