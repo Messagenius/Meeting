@@ -148,7 +148,7 @@ spec:
     spec:
       containers:
       - name: jicofo
-        image: jitsi/jicofo:stable-9258
+        image: sanketnawale/meet-jicofo:v1.0
         env:
         - {name: XMPP_SERVER, value: localhost}
         - {name: XMPP_DOMAIN, value: meet.jitsi}
@@ -163,7 +163,7 @@ spec:
           valueFrom: {secretKeyRef: {name: jitsi-config, key: JICOFO_AUTH_PASSWORD}}
 
       - name: prosody
-        image: jitsi/prosody:stable-9258
+        image: sanketnawale/meet-prosody:v1.0
         env:
         - {name: XMPP_DOMAIN, value: meet.jitsi}
         - {name: XMPP_AUTH_DOMAIN, value: auth.meet.jitsi}
@@ -202,7 +202,7 @@ spec:
           mountPath: /tmp/config-override
 
       - name: jvb
-        image: jitsi/jvb:stable-9258
+        image: sanketnawale/meet-jvb:v1.0
         env:
         - {name: XMPP_SERVER, value: localhost}
         - {name: DOCKER_HOST_ADDRESS, value: "${PUBLIC_IP}"}
