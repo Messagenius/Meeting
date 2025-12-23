@@ -1,73 +1,133 @@
-/* Messagenius Custom Styles */
-/* Add your custom CSS here */
-
-/* Example customizations: */
-/*
-body {
-    background-color: #f8f9fa;
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Google Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #fff;
 }
 
-.welcome-page .header-logo {
-    background-image: url(images/messagenius-logo.png);
-}
-*/
-
-
-/* css/custom.css - ACTIVE STYLES */
-/* Messagenius Custom Styles - FULL BRANDING */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-
-/* 1. Custom Font */
-* { font-family: 'Inter', sans-serif !important; }
-
-/* 2. Welcome Page - Purple Gradient */
-.welcome-page { 
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; 
-    min-height: 100vh;
+.mg-root {
+  display: flex;
+  min-height: 100vh;
 }
 
-/* 3. Logo Styling */
-.welcome-page .header-logo {
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    height: 80px !important;
+/* Sidebar */
+.mg-sidebar {
+  width: 240px;
+  padding: 16px 12px;
+  border-right: 1px solid #dadce0;
 }
 
-/* 4. Button Styling */
-button, .button {
-    background: linear-gradient(45deg, #0052cc, #0066ff) !important;
-    border-radius: 12px !important;
-    border: none !important;
-    color: white !important;
-    font-weight: 600 !important;
+.mg-logo {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 8px 12px 24px;
 }
 
-/* 5. Glass Toolbar */
-.toolbox {
-    background: rgba(255,255,255,0.95) !important;
-    backdrop-filter: blur(20px) !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+.mg-nav-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-/* 6. HIDE Jitsi Branding */
-.jitsi-watermark, .powered-by { display: none !important; }
-
-/* 7. MESSAGENIUS WATERMARK - REPLACE JITSI! */
-.watermark.leftwatermark,
-.watermark.leftwatermark.no-margin {
-    background-image: url('/images/messagenius-logo.png') !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    width: 120px !important;
-    height: 40px !important;
+.mg-nav-active {
+  background: #e8f0fe;
+  color: #1a73e8;
 }
 
-/* 8. Brand Link Styling */
-a[href="https://messagenius.com/"] .watermark {
-    opacity: 0.9 !important;
-    transition: opacity 0.3s ease !important;
+/* Main column */
+.mg-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 72px 24px 24px;
 }
 
-a[href="https://messagenius.com/"] .watermark:hover {
-    opacity: 1 !important;
+.mg-hero {
+  max-width: 640px;
+  text-align: center;
+}
+
+.mg-hero-title {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.mg-hero-subtitle {
+  font-size: 16px;
+  color: #5f6368;
+  margin-bottom: 32px;
+}
+
+/* Actions */
+.mg-hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.mg-btn-primary {
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.mg-btn-primary:hover {
+  background: #185abc;
+}
+
+.mg-join-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid #dadce0;
+  padding: 4px 4px 4px 16px;
+}
+
+.mg-input {
+  border: none;
+  outline: none;
+  min-width: 220px;
+  font-size: 14px;
+}
+
+.mg-btn-text {
+  border: none;
+  background: transparent;
+  color: #1a73e8;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 16px;
+}
+
+/* Card below */
+.mg-card {
+  margin-top: 64px;
+  width: 360px;
+  border-radius: 16px;
+  border: 1px solid #dadce0;
+  padding: 24px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mg-root { flex-direction: column; }
+  .mg-sidebar { width: 100%; border-right: none; border-bottom: 1px solid #dadce0; display: flex; align-items: center; }
+  .mg-main { padding-top: 40px; }
+  .mg-hero-actions { flex-direction: column; }
 }
