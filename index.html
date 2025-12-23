@@ -228,6 +228,25 @@
             <!-- Jitsi renders here -->
         </main>
     </div>
+    <script>
+    // Google Meet style sidebar toggle
+    document.addEventListener('DOMContentLoaded', function() {
+        const root = document.getElementById('mg-jitsi-root');
+        const hamburger = document.querySelector('.mg-main-menu');
+        
+        hamburger.addEventListener('click', function() {
+            root.classList.toggle('open');
+        });
+        
+        // Close on outside click
+        document.addEventListener('click', function(e) {
+            if (!root.contains(e.target)) {
+                root.classList.remove('open');
+            }
+        });
+    });
+    </script>
+
 
   </body>
 </html>
