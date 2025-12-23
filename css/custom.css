@@ -56,9 +56,13 @@ button, .button {
 /* Completely neutralize old global watermark rule */
 .watermark.leftwatermark,
 .watermark.leftwatermark.no-margin {
-    width: auto !important;
-    height: auto !important;
+    background-image: url('/images/messagenius-logo.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 120px !important;
+    height: 40px !important;
 }
+
 
 
 /* 8. Brand Link Styling */
