@@ -79,15 +79,7 @@ body.welcome-page,
     background-color: #ffffff !important;
 }
 /* GOOGLE MEET STYLE COLLAPSIBLE SIDEBAR */
-#mg-jitsi-root.mg-main-container {
-    display: flex !important;
-    height: 100vh !important;
-    width: 100vw !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    overflow: hidden !important;
-}
+
 
 #mg-jitsi-root .mg-sidebar {
     width: 280px !important;
@@ -166,11 +158,7 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
 }
 
 /* Push content when open */
-body.sidebar-open #react,
-body.sidebar-open .welcome {
-    margin-left: 280px !important;
-    transition: margin-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-}
+
 /* GOOGLE MEET HEADER - MESSAGENIUS BRAND */
 .mg-header {
     position: fixed !important;
@@ -263,30 +251,34 @@ body.sidebar-open .welcome {
     align-items: center !important;
 }
 
-/* HIDE HEADER/SIDEBAR DURING CALLS - Smart Detection */
-body:not(.welcome-page) .mg-header,
-body:not(.welcome-page) .mg-hamburger-toggle,
-body:not(.welcome-page) #mg-jitsi-root .mg-sidebar,
-body:not(.welcome-page).sidebar-open #react,
-body:not(.welcome-page).sidebar-open .welcome {
+/* ✅ FIXED - Use Jitsi classes */
+body.conference .mg-header,
+body.conference .mg-hamburger-toggle,
+body.conference #mg-jitsi-root,
+body.conference #mg-jitsi-root .mg-sidebar {
     display: none !important;
 }
 
-/* ONLY SHOW on Welcome/Meetings page */
-body.welcome-page .mg-header,
-body.welcome-page .mg-hamburger-toggle,
-body.welcome-page #mg-jitsi-root .mg-sidebar {
-    display: flex !important;
-    position: fixed !important;
+/* ENSURE JITSI CONTROLS WORK */
+.toolbox,
+.toolbox button,
+.toolbox *,
+[videocontainer],
+[videocontainer] button,
+.camera-button,
+.mic-button,
+.hangup-button {
+    pointer-events: auto !important;
+    z-index: 9999 !important;
+    position: relative !important;
 }
 
-/* Conference screen - Fullscreen Jitsi */
-body:not(.welcome-page) #react,
-body:not(.welcome-page) .welcome,
-body:not(.welcome-page) #mg-jitsi-root .mg-main-content {
-    margin-top: 0 !important;
-    margin-left: 0 !important;
-    height: 100vh !important;
-    width: 100vw !important;
+body.conference .toolbox-button,
+body.conference .toolbox-icon {
+    pointer-events: auto !important;
+    z-index: 9999 !important;
+    position: relative !important;
 }
-
+.videocontainer .toolbox {
+    overflow: visible !important;
+}
