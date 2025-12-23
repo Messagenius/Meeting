@@ -53,14 +53,13 @@ button, .button {
 .jitsi-watermark, .powered-by { display: none !important; }
 
 /* 7. MESSAGENIUS WATERMARK - REPLACE JITSI! */
+/* Completely neutralize old global watermark rule */
 .watermark.leftwatermark,
 .watermark.leftwatermark.no-margin {
-    background-image: url('/images/messagenius-logo.png') !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    width: 120px !important;
-    height: 40px !important;
+    width: auto !important;
+    height: auto !important;
 }
+
 
 /* 8. Brand Link Styling */
 a[href="https://messagenius.com/"] .watermark {
@@ -311,7 +310,8 @@ body.conference .mg-header {
     background-image: url('images/watermark.svg') !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
-    margin: 0 !important;          /* remove right-only margin */
+    margin-left: 8px !important;  /* more space between button and logo */
+    margin-right: 4px !important; /* small space before "Meet" */
 }
 
 /* Text next to logo */
