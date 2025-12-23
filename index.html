@@ -314,5 +314,19 @@
         updateTime();
         setInterval(updateTime, 60000);
         </script>
+        <script>
+        // AUTO-HIDE CUSTOM UI WHEN CONFERENCE STARTS
+        const observer = new MutationObserver(() => {
+            if (document.querySelector('.videocontainer') || 
+                document.querySelector('.conference-active') ||
+                !document.querySelector('.welcome')) {
+                document.body.classList.add('conference');
+            } else {
+                document.body.classList.remove('conference');
+            }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+        </script>
+
   </body>
 </html>
