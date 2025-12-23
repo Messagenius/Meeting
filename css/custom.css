@@ -79,33 +79,75 @@ body.welcome-page,
     background-color: #ffffff !important;
 }
 
-/* Left hamburger menu like Google Meet */
+/* Layout shell: sidebar + main */
+.mg-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.mg-sidebar {
+  width: 240px;
+  padding: 16px 8px;
+  border-right: 1px solid #dadce0;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.mg-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.mg-logo-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: #202124;
+}
+
+/* Hamburger */
 .mg-main-menu {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    width: 40px;
-    height: 40px;
-    border-radius: 999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    background: transparent;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
 }
 
 .mg-main-menu-icon {
-    width: 24px;
-    height: 24px;
-    fill: #5f6368;
+  width: 24px;
+  height: 24px;
+  fill: #5f6368;
 }
 
 .mg-main-menu:hover {
-    background-color: #e8f0fe;
+  background-color: #e8f0fe;
 }
 
-.mg-main-menu:focus-visible {
-    outline: 2px solid #1a73e8;
-    outline-offset: 2px;
+/* Nav items */
+.mg-nav-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.mg-nav-active {
+  background: #e8f0fe;
+  color: #1a73e8;
+}
+
+/* Main content area */
+.mg-main-container {
+  flex: 1;
 }

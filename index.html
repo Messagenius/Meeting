@@ -211,11 +211,24 @@
     </noscript>
     <!--#include virtual="body.html" -->
     <div id="react">
-     <!-- Hamburger menu button -->
-        <div class="mg-main-menu" role="button" tabindex="0" aria-label="Main menu" aria-expanded="true">
-            <svg class="mg-main-menu-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-            </svg>
+        <!-- Left sidebar + hamburger -->
+        <div class="mg-shell">
+            <aside class="mg-sidebar">
+            <div class="mg-sidebar-header">
+                <div class="mg-main-menu" role="button" tabindex="0" aria-label="Main menu" aria-expanded="true">
+                <svg class="mg-main-menu-icon" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                </svg>
+                </div>
+                <span class="mg-logo-text">Messagenius Meet</span>
+            </div>
+
+            <button class="mg-nav-item mg-nav-active">Meetings</button>
+            <button class="mg-nav-item">Calls</button>
+            </aside>
+
+            <!-- Main area where existing welcome content will appear -->
+            <div class="mg-main-container"></div>
         </div>
     </div>
   </body>
