@@ -262,3 +262,31 @@ body.sidebar-open .welcome {
     display: flex !important;
     align-items: center !important;
 }
+
+/* HIDE HEADER/SIDEBAR DURING CALLS - Smart Detection */
+body:not(.welcome-page) .mg-header,
+body:not(.welcome-page) .mg-hamburger-toggle,
+body:not(.welcome-page) #mg-jitsi-root .mg-sidebar,
+body:not(.welcome-page).sidebar-open #react,
+body:not(.welcome-page).sidebar-open .welcome {
+    display: none !important;
+}
+
+/* ONLY SHOW on Welcome/Meetings page */
+body.welcome-page .mg-header,
+body.welcome-page .mg-hamburger-toggle,
+body.welcome-page #mg-jitsi-root .mg-sidebar {
+    display: flex !important;
+    position: fixed !important;
+}
+
+/* Conference screen - Fullscreen Jitsi */
+body:not(.welcome-page) #react,
+body:not(.welcome-page) .welcome,
+body:not(.welcome-page) #mg-jitsi-root .mg-main-content {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
