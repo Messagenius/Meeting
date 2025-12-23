@@ -205,116 +205,114 @@
     <!--#include virtual="static/welcomePageAdditionalCard.html" -->
     <!--#include virtual="static/settingsToolbarAdditionalContent.html" -->
   </head>
-  <script>
-    // Toggle sidebar like Google Meet
-    document.addEventListener('DOMContentLoaded', () => {
-        const hamburger = document.querySelector('.mg-hamburger-toggle');
-        const body = document.body;
-        
-        hamburger.addEventListener('click', () => {
-            body.classList.toggle('sidebar-open');
+    <script>
+        // Toggle sidebar like Google Meet
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.mg-hamburger-toggle');
+            const body = document.body;
+            
+            hamburger.addEventListener('click', () => {
+                body.classList.toggle('sidebar-open');
+            });
+            
+            // Close on outside click
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.mg-sidebar') && !e.target.closest('.mg-hamburger-toggle')) {
+                    body.classList.remove('sidebar-open');
+                }
+            });
         });
-        
-        // Close on outside click
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.mg-sidebar') && !e.target.closest('.mg-hamburger-toggle')) {
-                body.classList.remove('sidebar-open');
-            }
-        });
-    });
     
 
     </script>
 
   <body>
-    <noscript aria-hidden="true">
-        <div>JavaScript is disabled. </br>For this site to work you have to enable JavaScript.</div>
-    </noscript>
-    <!-- MESSAGENIUS HEADER - Google Meet Style -->
-    <div class="mg-header">
-        <div class="mg-header-left">
-        <!-- 1. Hamburger Button INSIDE header -->
-            <div class="mg-hamburger-toggle">
-                <svg class="mg-hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="white">
+        <noscript aria-hidden="true">
+            <div>JavaScript is disabled. </br>For this site to work you have to enable JavaScript.</div>
+        </noscript>
+        <!-- MESSAGENIUS HEADER - Google Meet Style -->
+        <div class="mg-header">
+            <div class="mg-header-left">
+            <!-- 1. Hamburger Button INSIDE header -->
+                <div class="mg-hamburger-toggle">
+                    <svg class="mg-hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                    </svg>
+                </div>
+                
+                <!-- 2. Watermark Logo Image -->
+                <div class="mg-logo-image watermark leftwatermark no-margin" style="background-image: url('images/watermark.svg'); width: 32px; height: 32px; background-size: contain; background-repeat: no-repeat; margin-right: 8px;"></div>
+                
+                <!-- 3. Messagenius Meet Text -->
+                <a href="/" class="mg-logo-text">
+                    <span style="font-weight: 700;"></span>
+                    <span style="font-weight: 400; margin-left: 20px;">Meet</span>
+                </a>
+            </div>
+
+            
+            <div class="mg-header-right">
+                <div class="mg-time" id="mg-time">
+                    9:14 PM • Tue, Dec 23
+                </div>
+                <svg class="mg-settings" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96c-.22-.07-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.07.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.03-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                </svg>
+            </div>
+        </div>
+        <!--#include virtual="body.html" -->
+        <div id="react"></div>
+        <!-- STANDALONE HAMBURGER BUTTON - Google Meet Style -->
+        
+
+        <div id="mg-jitsi-root" class="mg-main-container">
+            <aside class="mg-sidebar">
+                <div class="mg-sidebar-header">
+                <div class="mg-main-menu" role="button" tabindex="0" aria-label="Main menu">
+                    <svg class="mg-main-menu-icon" focusable="false" viewBox="0 0 24 24">
                     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                </svg>
-            </div>
-            
-            <!-- 2. Watermark Logo Image -->
-            <div class="mg-logo-image watermark leftwatermark no-margin" style="background-image: url('images/watermark.svg'); width: 32px; height: 32px; background-size: contain; background-repeat: no-repeat; margin-right: 8px;"></div>
-            
-            <!-- 3. Messagenius Meet Text -->
-            <a href="/" class="mg-logo-text">
-                <span style="font-weight: 700;"></span>
-                <span style="font-weight: 400; margin-left: 20px;">Meet</span>
-            </a>
+                    </svg>
+                    <div><span class="mg-logo-text">Messagenius Meet</span></div>
+                </div>
+                <button class="mg-nav-item mg-nav-active">Meetings</button>
+                <button class="mg-nav-item">Calls</button>
+                </div>
+            </aside>
+            <main class="mg-main-content">
+                <!-- Jitsi renders here -->
+            </main>
         </div>
-
-        
-        <div class="mg-header-right">
-            <div class="mg-time" id="mg-time">
-                9:14 PM • Tue, Dec 23
-            </div>
-            <svg class="mg-settings" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96c-.22-.07-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.07.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.03-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
-            </svg>
-        </div>
-    </div>
-    <!--#include virtual="body.html" -->
-    <div id="react"></div>
-    <!-- STANDALONE HAMBURGER BUTTON - Google Meet Style -->
-    
-
-    <div id="mg-jitsi-root" class="mg-main-container">
-        <aside class="mg-sidebar">
-            <div class="mg-sidebar-header">
-            <div class="mg-main-menu" role="button" tabindex="0" aria-label="Main menu">
-                <svg class="mg-main-menu-icon" focusable="false" viewBox="0 0 24 24">
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                </svg>
-                <div><span class="mg-logo-text">Messagenius Meet</span></div>
-            </div>
-            <button class="mg-nav-item mg-nav-active">Meetings</button>
-            <button class="mg-nav-item">Calls</button>
-            </div>
-        </aside>
-        <main class="mg-main-content">
-            <!-- Jitsi renders here -->
-        </main>
-    </div>
-    <script>
-    // Google Meet style sidebar toggle
-    document.addEventListener('DOMContentLoaded', function() {
-        const root = document.getElementById('mg-jitsi-root');
-        const hamburger = document.querySelector('.mg-main-menu');
-        
-        hamburger.addEventListener('click', function() {
-            root.classList.toggle('open');
+        <script>
+        // Google Meet style sidebar toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const root = document.getElementById('mg-jitsi-root');
+            const hamburger = document.querySelector('.mg-main-menu');
+            
+            hamburger.addEventListener('click', function() {
+                root.classList.toggle('open');
+            });
+            
+            // Close on outside click
+            document.addEventListener('click', function(e) {
+                if (!root.contains(e.target)) {
+                    root.classList.remove('open');
+                }
+            });
         });
-        
-        // Close on outside click
-        document.addEventListener('click', function(e) {
-            if (!root.contains(e.target)) {
-                root.classList.remove('open');
-            }
-        });
-    });
-    </script>
-    <script>
-    // LIVE TIME UPDATE - Google Meet Style
-    function updateTime() {
-        const now = new Date();
-        const time = now.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', hour12: true});
-        const date = now.toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric'});
-        const timeEl = document.getElementById('mg-time');
-        if (timeEl) timeEl.textContent = `${time} • ${date}`;
-    }
+        </script>
+        <script>
+        // LIVE TIME UPDATE - Google Meet Style
+        function updateTime() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit', hour12: true});
+            const date = now.toLocaleDateString('en-US', {weekday: 'short', month: 'short', day: 'numeric'});
+            const timeEl = document.getElementById('mg-time');
+            if (timeEl) timeEl.textContent = `${time} • ${date}`;
+        }
 
-    // Update immediately + every minute
-    updateTime();
-    setInterval(updateTime, 60000);
-    </script>
-
-
+        // Update immediately + every minute
+        updateTime();
+        setInterval(updateTime, 60000);
+        </script>
   </body>
 </html>
