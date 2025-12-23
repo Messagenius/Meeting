@@ -240,7 +240,8 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
-    margin: 0 !important;
+    border: none !important;
+    background-color: transparent !important;
 }
 
 /* Text logo */
