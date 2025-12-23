@@ -1,52 +1,54 @@
-/* Messagenius Google Meet Clone - FULL OVERLAY */
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+/* 🔥 NUCLEAR GOOGLE MEET CLONE - 100% Jitsi Kill */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&display=swap');
 
-/* PRESERVE EXISTING MESSAGENIUS BRANDING */
+/* KILL ALL JITSI ELEMENTS */
 * { 
     font-family: 'Google Sans', Inter, sans-serif !important; 
 }
 
-/* GOOGLE MEET FULL PAGE LAYOUT */
-body {
-    background: linear-gradient(135deg, #f1f3f4 0%, #e8f0fe 100%) !important;
-    display: flex !important;
-    min-height: 100vh !important;
-    margin: 0 !important;
+/* DESTROY JITSI LOGO/WATERMARK COMPLETELY */
+.header-image, .header-logo, .header-watermark-container,
+.watermark, .jitsi-watermark, .powered-by,
+div[class*="watermark"], div[class*="logo"],
+img[src*="jitsi"], img[src*="watermark.svg"] {
+    display: none !important;
 }
 
-/* LEFT SIDEBAR - Google Meet Style */
-body::before {
-    content: '';
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 240px;
+/* FULL GOOGLE MEET BACKGROUND */
+body, .welcome-page {
+    background: linear-gradient(135deg, #f1f3f4 0%, #e8f0fe 100%) !important;
+    min-height: 100vh !important;
+}
+
+/* LEFT SIDEBAR - PERFECT GOOGLE MEET */
+.sidebar-google {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 240px !important;
     background: #fff !important;
     border-right: 1px solid #dadce0 !important;
     box-shadow: 0 1px 20px rgba(0,0,0,0.08) !important;
-    z-index: 1000;
+    z-index: 9999 !important;
 }
 
-body::after {
-    content: 'Meetings';
-    position: fixed;
-    left: 24px;
-    top: 24px;
+.sidebar-title-google {
+    position: fixed !important;
+    left: 24px !important;
+    top: 24px !important;
     font-size: 20px !important;
     font-weight: 500 !important;
     color: #202124 !important;
-    z-index: 1001;
+    z-index: 10000 !important;
 }
 
-/* NEW MEETING BUTTON OVERLAY */
-.new-meeting-overlay::before {
-    content: '📹 New meeting';
-    position: fixed;
-    left: 24px;
-    top: 80px;
-    width: 192px;
-    height: 44px;
+.new-meeting-google {
+    position: fixed !important;
+    left: 24px !important;
+    top: 80px !important;
+    width: 192px !important;
+    height: 44px !important;
     background: linear-gradient(135deg, #1a73e8, #1669c1) !important;
     color: white !important;
     border: none !important;
@@ -58,90 +60,71 @@ body::after {
     padding: 12px 20px !important;
     cursor: pointer !important;
     box-shadow: 0 2px 8px rgba(26,115,232,0.3) !important;
-    transition: all 0.2s !important;
-    z-index: 1001;
+    z-index: 10000 !important;
 }
 
-.new-meeting-overlay::before:hover {
-    background: #1557b0 !important;
-    transform: translateY(-1px) !important;
-}
-
-/* CALENDAR LINK */
-.calendar-overlay::before {
-    content: '📅 Calendar';
-    position: fixed;
-    left: 24px;
-    top: 140px;
-    width: 192px;
-    height: 44px;
+.calendar-google {
+    position: fixed !important;
+    left: 24px !important;
+    top: 140px !important;
+    width: 192px !important;
+    height: 44px !important;
     color: #5f6368 !important;
     font-size: 14px !important;
     display: flex !important;
     align-items: center !important;
     padding: 12px 20px !important;
-    text-decoration: none !important;
     border-radius: 8px !important;
-    transition: background 0.2s !important;
-    z-index: 1001;
+    z-index: 10000 !important;
 }
 
-.calendar-overlay::before:hover {
-    background: #f8f9fa !important;
-}
-
-/* PUSH MAIN CONTENT RIGHT */
-#react, .welcome-page {
+/* PUSH CONTENT RIGHT */
+#react, .welcome-page, body > div {
     margin-left: 240px !important;
     padding: 40px !important;
     max-width: 800px !important;
     margin: 40px auto !important;
 }
 
-/* GOOGLE MEET HEADER */
-.welcome-page::before {
-    content: 'Messagenius Meet';
-    position: fixed;
-    left: 320px;
-    top: 24px;
+/* MESSAGENIUS MEET HEADER */
+.meet-header-google {
+    position: fixed !important;
+    left: 280px !important;
+    top: 24px !important;
     font-size: 48px !important;
     font-weight: 400 !important;
     color: #202124 !important;
-    line-height: 1.2 !important;
-    z-index: 1001;
+    z-index: 10000 !important;
 }
 
-.welcome-page::after {
-    content: 'Make meetings happen with one click';
-    position: fixed;
-    left: 320px;
-    top: 88px;
+.meet-subtitle-google {
+    position: fixed !important;
+    left: 280px !important;
+    top: 88px !important;
     font-size: 16px !important;
     color: #5f6368 !important;
-    z-index: 1001;
+    z-index: 10000 !important;
 }
 
-/* ENTER CODE INPUT - Google Meet Style */
-input[type="text"], input[type="search"] {
+/* ENTER ROOM INPUT - PERFECT GOOGLE MEET */
+.enterroomfield, input[placeholder*="Enter"], input[type="text"] {
     width: 100% !important;
     max-width: 400px !important;
     padding: 16px 20px !important;
     border: 2px solid #dadce0 !important;
     border-radius: 24px !important;
     font-size: 16px !important;
-    outline: none !important;
     margin: 0 auto 16px !important;
     display: block !important;
-    font-family: 'Google Sans', sans-serif !important;
 }
 
-input[type="text"]:focus, input[type="search"]:focus {
+.enterroomfield:focus {
     border-color: #1a73e8 !important;
     box-shadow: 0 0 0 3px rgba(26,115,232,0.1) !important;
 }
 
-/* ALL BUTTONS - Google Meet Primary */
-button, .button, .btn {
+/* ALL BUTTONS - GOOGLE MEET BLUE */
+button, .welcome-page-button, .enterroombutton {
     background: #1a73e8 !important;
     color: white !important;
     border: none !important;
@@ -151,69 +134,80 @@ button, .button, .btn {
     padding: 14px 28px !important;
     cursor: pointer !important;
     box-shadow: 0 2px 8px rgba(26,115,232,0.3) !important;
-    transition: all 0.2s !important;
     margin: 0 8px !important;
-    font-family: 'Google Sans', sans-serif !important;
 }
 
-button:hover, .button:hover, .btn:hover {
+button:hover {
     background: #1557b0 !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 4px 16px rgba(26,115,232,0.4) !important;
 }
 
-/* OUTLINED BUTTONS */
-button.outline, button.outlined, .outlined {
-    background: white !important;
-    color: #1a73e8 !important;
-    border: 1px solid #1a73e8 !important;
+/* KILL CALENDAR TABS & CARDS */
+.welcome-tabs, .welcome-card, .meetings-list,
+.meetings-list-empty, .tab-container {
+    display: none !important;
 }
 
-/* CARDS - Google Meet Elevation */
-.welcome-page .card, .promo-card, .action-item {
+/* CARDS - GOOGLE MEET STYLE */
+.welcome-cards-container {
+    display: flex !important;
+    gap: 16px !important;
+    justify-content: center !important;
+    margin-top: 200px !important;
+}
+
+.welcome-card-column {
     background: #fff !important;
     border-radius: 24px !important;
     padding: 40px !important;
     box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
-    margin-bottom: 32px !important;
-    text-align: center !important;
-    transition: box-shadow 0.3s !important;
 }
 
-.welcome-page .card:hover, .promo-card:hover {
-    box-shadow: 0 8px 40px rgba(0,0,0,0.15) !important;
-}
-
-/* TOOLBAR - Glass Effect */
-.toolbox {
+/* TOOLBAR - HIDE OR STYLE */
+.toolbox, .toolbox-button {
     background: rgba(255,255,255,0.95) !important;
     backdrop-filter: blur(20px) !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
     border-radius: 24px !important;
 }
 
-/* HIDE JITSI + MESSAGENIUS BRAND */
-.jitsi-watermark, .powered-by { display: none !important; }
-.watermark.leftwatermark, .watermark.leftwatermark.no-margin {
-    background-image: url('/images/messagenius-logo.png') !important;
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    width: 120px !important;
-    height: 40px !important;
+/* MOBILE */
+@media (max-width: 768px) {
+    .sidebar-google, .meet-header-google, .meet-subtitle-google,
+    .new-meeting-google, .calendar-google { display: none !important; }
+    #react, .welcome-page { margin-left: 0 !important; }
 }
 
-/* MOBILE - Hide Sidebar */
-@media (max-width: 768px) {
-    body::before, body::after { display: none !important; }
-    #react, .welcome-page { margin-left: 0 !important; padding: 20px !important; }
-    .welcome-page::before { 
-        left: 20px !important; 
-        font-size: 32px !important; 
-        top: 16px !important;
-    }
-    .welcome-page::after { 
-        left: 20px !important; 
-        top: 64px !important;
-        font-size: 14px !important;
-    }
+/* INJECT GOOGLE MEET ELEMENTS */
+body::before {
+    content: '';
+    position: fixed;
+    left: 0; top: 0; bottom: 0; width: 240px;
+    background: #fff;
+    border-right: 1px solid #dadce0;
+    box-shadow: 0 1px 20px rgba(0,0,0,0.08);
+    z-index: 9999;
+}
+
+body::after {
+    content: 'Meetings';
+    position: fixed;
+    left: 24px; top: 24px;
+    font-size: 20px; font-weight: 500; color: #202124;
+    z-index: 10000;
+}
+
+.welcome-page::before {
+    content: 'Messagenius Meet';
+    position: fixed;
+    left: 280px; top: 24px;
+    font-size: 48px; font-weight: 400; color: #202124;
+    z-index: 10000;
+}
+
+.welcome-page::after {
+    content: 'Make meetings happen with one click';
+    position: fixed;
+    left: 280px; top: 88px;
+    font-size: 16px; color: #5f6368;
+    z-index: 10000;
 }
