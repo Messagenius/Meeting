@@ -292,3 +292,11 @@ body.conference #mg-time {
 body.conference #mg-jitsi-root {
     padding-top: 0 !important;
 }
+body.conference .mg-header {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+}
