@@ -32,13 +32,9 @@
                 return;
             }
 
-            // Mount Jitsi into our custom div instead of replacing #react
-            const rootElement = document.getElementById('mg-jitsi-root');
-            if (rootElement) {
-                JitsiMeetJS.app.renderEntryPoint({
-                    Component: JitsiMeetJS.app.entryPoints.APP
-                }, rootElement);
-            }
+            JitsiMeetJS.app.renderEntryPoint({
+                Component: JitsiMeetJS.app.entryPoints.APP
+            })
 
             const isEmbedded = () => {
                 try {
