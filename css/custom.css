@@ -1,171 +1,73 @@
-/* 🔥 ULTIMATE GOOGLE MEET - KILLS ALL JITSI */
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&display=swap');
+/* Messagenius Custom Styles */
+/* Add your custom CSS here */
 
-/* FORCE GOOGLE SANS EVERYWHERE */
-* {
-    font-family: 'Google Sans', sans-serif !important;
-}
-
-/* NUKE ALL BACKGROUNDS */
-body, html, #react, .welcome-page,
-div[class*="welcome"], div[class*="header"],
-div[class*="container"], .welcome-page,
-[class*="welcome-page"] {
-    background: linear-gradient(135deg, #f1f3f4 0%, #e8f0fe 100%) !important;
-    background-image: none !important;
-    background-color: #f1f3f4 !important;
-}
-
-/* KILL ALL IMAGES/LOGOS/BACKGROUNDS */
-img, div[style*="background-image"], 
-.header-image, .header-logo, .header-watermark-container,
-.watermark, .jitsi-watermark, .powered-by,
-[class*="logo"], [class*="watermark"],
-div[style*="url"], div[style*="images"] {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    height: 0 !important;
-    width: 0 !important;
-}
-
-/* HIDE Jitsi WELCOME PAGE ELEMENTS */
-.welcome-tabs, .welcome-card, .meetings-list,
-.meetings-list-empty, .tab-container,
-.header-container, .header-text-title,
-[class*="calendar"], [class*="recent"] {
-    display: none !important;
-}
-
-/* FORCE GOOGLE MEET LAYOUT */
+/* Example customizations: */
+/*
 body {
-    display: flex !important;
-    min-height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    background-color: #f8f9fa;
 }
 
-/* LEFT SIDEBAR */
-body::before {
-    content: '' !important;
-    position: fixed !important;
-    left: 0 !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    width: 240px !important;
-    background: #ffffff !important;
-    border-right: 1px solid #dadce0 !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
-    z-index: 999999 !important;
+.welcome-page .header-logo {
+    background-image: url(images/messagenius-logo.png);
+}
+*/
+
+
+/* css/custom.css - ACTIVE STYLES */
+/* Messagenius Custom Styles - FULL BRANDING */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* 1. Custom Font */
+* { font-family: 'Inter', sans-serif !important; }
+
+/* 2. Welcome Page - Purple Gradient */
+.welcome-page { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; 
+    min-height: 100vh;
 }
 
-body::after {
-    content: 'Meetings' !important;
-    position: fixed !important;
-    left: 24px !important;
-    top: 24px !important;
-    font-size: 20px !important;
-    font-weight: 500 !important;
-    color: #202124 !important;
-    z-index: 1000000 !important;
+/* 3. Logo Styling */
+.welcome-page .header-logo {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    height: 80px !important;
 }
 
-/* NEW MEETING BUTTON */
-#react::before {
-    content: '📹 New meeting' !important;
-    position: fixed !important;
-    left: 24px !important;
-    top: 80px !important;
-    width: 192px !important;
-    height: 44px !important;
-    background: #1a73e8 !important;
-    color: white !important;
-    border-radius: 8px !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    display: flex !important;
-    align-items: center !important;
-    padding: 12px 20px !important;
-    cursor: pointer !important;
-    box-shadow: 0 2px 8px rgba(26,115,232,0.3) !important;
-    z-index: 1000000 !important;
-}
-
-/* MAIN CONTENT PUSH */
-#react, body > div:first-child {
-    margin-left: 240px !important;
-    padding: 120px 40px 40px !important;
-    max-width: 800px !important;
-    margin: 120px auto 40px !important;
-}
-
-/* MESSAGENIUS MEET HEADER */
-.welcome-page::before {
-    content: 'Messagenius Meet' !important;
-    position: fixed !important;
-    left: 280px !important;
-    top: 24px !important;
-    font-size: 48px !important;
-    font-weight: 400 !important;
-    color: #202124 !important;
-    z-index: 1000000 !important;
-    line-height: 1.2 !important;
-}
-
-.welcome-page::after {
-    content: 'Make meetings happen with one click' !important;
-    position: fixed !important;
-    left: 280px !important;
-    top: 88px !important;
-    font-size: 16px !important;
-    color: #5f6368 !important;
-    z-index: 1000000 !important;
-}
-
-/* ENTER ROOM INPUT */
-.enterroomfield, input[type="text"], input[placeholder*="Enter"] {
-    width: 100% !important;
-    max-width: 400px !important;
-    padding: 16px 20px !important;
-    border: 2px solid #dadce0 !important;
-    border-radius: 24px !important;
-    font-size: 16px !important;
-    margin: 0 auto 24px !important;
-    display: block !important;
-    background: white !important;
-}
-
-.enterroomfield:focus {
-    border-color: #1a73e8 !important;
-    box-shadow: 0 0 0 3px rgba(26,115,232,0.1) !important;
-}
-
-/* ALL BUTTONS GOOGLE BLUE */
-button, [class*="button"], .enterroombutton {
-    background: #1a73e8 !important;
-    color: white !important;
+/* 4. Button Styling */
+button, .button {
+    background: linear-gradient(45deg, #0052cc, #0066ff) !important;
+    border-radius: 12px !important;
     border: none !important;
-    border-radius: 8px !important;
-    font-weight: 500 !important;
-    font-size: 16px !important;
-    padding: 14px 28px !important;
-    cursor: pointer !important;
-    box-shadow: 0 2px 8px rgba(26,115,232,0.3) !important;
-    margin: 0 8px !important;
+    color: white !important;
+    font-weight: 600 !important;
 }
 
-button:hover {
-    background: #1557b0 !important;
-    box-shadow: 0 4px 16px rgba(26,115,232,0.4) !important;
+/* 5. Glass Toolbar */
+.toolbox {
+    background: rgba(255,255,255,0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    body::before, body::after, #react::before { display: none !important; }
-    #react, body > div:first-child { margin-left: 0 !important; padding: 80px 20px 20px !important; }
-    .welcome-page::before { 
-        left: 20px !important; 
-        font-size: 32px !important; 
-        top: 16px !important;
-    }
+/* 6. HIDE Jitsi Branding */
+.jitsi-watermark, .powered-by { display: none !important; }
+
+/* 7. MESSAGENIUS WATERMARK - REPLACE JITSI! */
+.watermark.leftwatermark,
+.watermark.leftwatermark.no-margin {
+    background-image: url('/images/messagenius-logo.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    width: 120px !important;
+    height: 40px !important;
+}
+
+/* 8. Brand Link Styling */
+a[href="https://messagenius.com/"] .watermark {
+    opacity: 0.9 !important;
+    transition: opacity 0.3s ease !important;
+}
+
+a[href="https://messagenius.com/"] .watermark:hover {
+    opacity: 1 !important;
 }
