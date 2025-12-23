@@ -218,9 +218,6 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
 }
 
 /* Push content below header */
-#react, .welcome, #mg-jitsi-root .mg-main-content {
-    margin-top: 64px !important;
-}
 /* REMOVE old standalone hamburger positioning */
 .mg-hamburger-toggle {
     position: static !important;  /* Now inside header flow */
