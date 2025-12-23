@@ -210,22 +210,23 @@
         <div>JavaScript is disabled. </br>For this site to work you have to enable JavaScript.</div>
     </noscript>
     <!--#include virtual="body.html" -->
-    <div id="react">
-        <div class="mg-shell">
-            <aside class="mg-sidebar">
-                <div class="mg-sidebar-header">
-                    <div class="mg-main-menu" role="button" tabindex="0" aria-label="Main menu">
-                        <svg class="mg-main-menu-icon" focusable="false" viewBox="0 0 24 24">
-                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                        </svg>
-                    </div>
-                    <span class="mg-logo-text">Messagenius Meet</span>
-                </div>
-                <button class="mg-nav-item mg-nav-active">Meetings</button>
-                <button class="mg-nav-item">Calls</button>
-            </aside>
-            <div id="mg-jitsi-root" class="mg-main-container"></div>
-        </div>
+    <div id="react"></div>
+    <div id="mg-jitsi-root" class="mg-main-container">
+        <aside class="mg-sidebar">
+            <div class="mg-sidebar-header">
+            <div class="mg-main-menu" role="button" tabindex="0" aria-label="Main menu">
+                <svg class="mg-main-menu-icon" focusable="false" viewBox="0 0 24 24">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                </svg>
+                <div><span class="mg-logo-text">Messagenius Meet</span></div>
+            </div>
+            <button class="mg-nav-item mg-nav-active">Meetings</button>
+            <button class="mg-nav-item">Calls</button>
+            </div>
+        </aside>
+        <main class="mg-main-content">
+            <!-- Jitsi renders here -->
+        </main>
     </div>
 
   </body>
