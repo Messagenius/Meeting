@@ -210,6 +210,35 @@
         <div>JavaScript is disabled. </br>For this site to work you have to enable JavaScript.</div>
     </noscript>
     <!--#include virtual="body.html" -->
-    <div id="react" role="main"></div>
+    <div id="react">
+    <div class="mg-root">
+        <aside class="mg-sidebar">
+        <div class="mg-logo">Messagenius Meet</div>
+        <button class="mg-nav-item mg-nav-active">Meetings</button>
+        <button class="mg-nav-item">Calls</button>
+        </aside>
+
+        <main class="mg-main">
+        <section class="mg-hero">
+            <h1 class="mg-hero-title">Video calls and meetings for everyone</h1>
+            <p class="mg-hero-subtitle">
+            Connect, collaborate, and celebrate from anywhere with Messagenius Meet
+            </p>
+            <div class="mg-hero-actions">
+            <button class="mg-btn-primary" id="mg-new-meeting">New meeting</button>
+            <div class="mg-join-box">
+                <input class="mg-input" id="mg-room" placeholder="Enter a code or link">
+                <button class="mg-btn-text" id="mg-join">Join</button>
+            </div>
+            </div>
+        </section>
+
+        <section class="mg-card">
+            <!-- optional carousel / image / text -->
+        </section>
+        </main>
+    </div>
+    </div>
+
   </body>
 </html>
