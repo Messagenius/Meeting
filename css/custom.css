@@ -78,3 +78,34 @@ body.welcome-page,
     background-image: none !important;
     background-color: #ffffff !important;
 }
+
+/* Left hamburger menu like Google Meet */
+.mg-main-menu {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+
+.mg-main-menu-icon {
+    width: 24px;
+    height: 24px;
+    fill: #5f6368;
+}
+
+.mg-main-menu:hover {
+    background-color: #e8f0fe;
+}
+
+.mg-main-menu:focus-visible {
+    outline: 2px solid #1a73e8;
+    outline-offset: 2px;
+}
