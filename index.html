@@ -205,12 +205,38 @@
     <!--#include virtual="static/welcomePageAdditionalCard.html" -->
     <!--#include virtual="static/settingsToolbarAdditionalContent.html" -->
   </head>
+  <script>
+    // Toggle sidebar like Google Meet
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.querySelector('.mg-hamburger-toggle');
+        const body = document.body;
+        
+        hamburger.addEventListener('click', () => {
+            body.classList.toggle('sidebar-open');
+        });
+        
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.mg-sidebar') && !e.target.closest('.mg-hamburger-toggle')) {
+                body.classList.remove('sidebar-open');
+            }
+        });
+    });
+    </script>
+
   <body>
     <noscript aria-hidden="true">
         <div>JavaScript is disabled. </br>For this site to work you have to enable JavaScript.</div>
     </noscript>
     <!--#include virtual="body.html" -->
     <div id="react"></div>
+    <!-- STANDALONE HAMBURGER BUTTON - Google Meet Style -->
+    <div class="mg-hamburger-toggle" style="position:fixed; top:20px; left:20px; z-index:1001; background:rgba(31,41,55,0.95); border-radius:12px; padding:16px; cursor:pointer; backdrop-filter:blur(20px); box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+        <svg class="mg-hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="white">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+        </svg>
+    </div>
+
     <div id="mg-jitsi-root" class="mg-main-container">
         <aside class="mg-sidebar">
             <div class="mg-sidebar-header">
