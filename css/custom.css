@@ -298,18 +298,20 @@ body.conference .mg-header {
     border: none !important;
 }
 .mg-header-left {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;  /* space between button, logo, text */
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important; /* spaces button, logo, text */
 }
 
 .mg-logo-image {
-    height: 28px !important;
-    width: auto !important;
+  width: 32px !important;
+  height: 32px !important;
+  background-image: url('images/watermark.svg') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
 }
 
-.mg-logo-text {
-    font-size: 1.1rem !important;
-    font-weight: 600 !important;
-    color: #ffffff !important;
+.mg-logo-title {
+  font-weight: 400;
+  margin-left: 4px;
 }
