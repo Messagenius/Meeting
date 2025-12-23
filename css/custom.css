@@ -1,57 +1,85 @@
-/* 🔥 NUCLEAR GOOGLE MEET CLONE - 100% Jitsi Kill */
+/* 🔥 ULTIMATE GOOGLE MEET - KILLS ALL JITSI */
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600&display=swap');
 
-/* KILL ALL JITSI ELEMENTS */
-* { 
-    font-family: 'Google Sans', Inter, sans-serif !important; 
+/* FORCE GOOGLE SANS EVERYWHERE */
+* {
+    font-family: 'Google Sans', sans-serif !important;
 }
 
-/* DESTROY JITSI LOGO/WATERMARK COMPLETELY */
+/* NUKE ALL BACKGROUNDS */
+body, html, #react, .welcome-page,
+div[class*="welcome"], div[class*="header"],
+div[class*="container"], .welcome-page,
+[class*="welcome-page"] {
+    background: linear-gradient(135deg, #f1f3f4 0%, #e8f0fe 100%) !important;
+    background-image: none !important;
+    background-color: #f1f3f4 !important;
+}
+
+/* KILL ALL IMAGES/LOGOS/BACKGROUNDS */
+img, div[style*="background-image"], 
 .header-image, .header-logo, .header-watermark-container,
 .watermark, .jitsi-watermark, .powered-by,
-div[class*="watermark"], div[class*="logo"],
-img[src*="jitsi"], img[src*="watermark.svg"] {
+[class*="logo"], [class*="watermark"],
+div[style*="url"], div[style*="images"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+/* HIDE Jitsi WELCOME PAGE ELEMENTS */
+.welcome-tabs, .welcome-card, .meetings-list,
+.meetings-list-empty, .tab-container,
+.header-container, .header-text-title,
+[class*="calendar"], [class*="recent"] {
     display: none !important;
 }
 
-/* FULL GOOGLE MEET BACKGROUND */
-body, .welcome-page {
-    background: linear-gradient(135deg, #f1f3f4 0%, #e8f0fe 100%) !important;
+/* FORCE GOOGLE MEET LAYOUT */
+body {
+    display: flex !important;
     min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* LEFT SIDEBAR - PERFECT GOOGLE MEET */
-.sidebar-google {
+/* LEFT SIDEBAR */
+body::before {
+    content: '' !important;
     position: fixed !important;
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
     width: 240px !important;
-    background: #fff !important;
+    background: #ffffff !important;
     border-right: 1px solid #dadce0 !important;
-    box-shadow: 0 1px 20px rgba(0,0,0,0.08) !important;
-    z-index: 9999 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    z-index: 999999 !important;
 }
 
-.sidebar-title-google {
+body::after {
+    content: 'Meetings' !important;
     position: fixed !important;
     left: 24px !important;
     top: 24px !important;
     font-size: 20px !important;
     font-weight: 500 !important;
     color: #202124 !important;
-    z-index: 10000 !important;
+    z-index: 1000000 !important;
 }
 
-.new-meeting-google {
+/* NEW MEETING BUTTON */
+#react::before {
+    content: '📹 New meeting' !important;
     position: fixed !important;
     left: 24px !important;
     top: 80px !important;
     width: 192px !important;
     height: 44px !important;
-    background: linear-gradient(135deg, #1a73e8, #1669c1) !important;
+    background: #1a73e8 !important;
     color: white !important;
-    border: none !important;
     border-radius: 8px !important;
     font-size: 14px !important;
     font-weight: 500 !important;
@@ -60,62 +88,51 @@ body, .welcome-page {
     padding: 12px 20px !important;
     cursor: pointer !important;
     box-shadow: 0 2px 8px rgba(26,115,232,0.3) !important;
-    z-index: 10000 !important;
+    z-index: 1000000 !important;
 }
 
-.calendar-google {
-    position: fixed !important;
-    left: 24px !important;
-    top: 140px !important;
-    width: 192px !important;
-    height: 44px !important;
-    color: #5f6368 !important;
-    font-size: 14px !important;
-    display: flex !important;
-    align-items: center !important;
-    padding: 12px 20px !important;
-    border-radius: 8px !important;
-    z-index: 10000 !important;
-}
-
-/* PUSH CONTENT RIGHT */
-#react, .welcome-page, body > div {
+/* MAIN CONTENT PUSH */
+#react, body > div:first-child {
     margin-left: 240px !important;
-    padding: 40px !important;
+    padding: 120px 40px 40px !important;
     max-width: 800px !important;
-    margin: 40px auto !important;
+    margin: 120px auto 40px !important;
 }
 
 /* MESSAGENIUS MEET HEADER */
-.meet-header-google {
+.welcome-page::before {
+    content: 'Messagenius Meet' !important;
     position: fixed !important;
     left: 280px !important;
     top: 24px !important;
     font-size: 48px !important;
     font-weight: 400 !important;
     color: #202124 !important;
-    z-index: 10000 !important;
+    z-index: 1000000 !important;
+    line-height: 1.2 !important;
 }
 
-.meet-subtitle-google {
+.welcome-page::after {
+    content: 'Make meetings happen with one click' !important;
     position: fixed !important;
     left: 280px !important;
     top: 88px !important;
     font-size: 16px !important;
     color: #5f6368 !important;
-    z-index: 10000 !important;
+    z-index: 1000000 !important;
 }
 
-/* ENTER ROOM INPUT - PERFECT GOOGLE MEET */
-.enterroomfield, input[placeholder*="Enter"], input[type="text"] {
+/* ENTER ROOM INPUT */
+.enterroomfield, input[type="text"], input[placeholder*="Enter"] {
     width: 100% !important;
     max-width: 400px !important;
     padding: 16px 20px !important;
     border: 2px solid #dadce0 !important;
     border-radius: 24px !important;
     font-size: 16px !important;
-    margin: 0 auto 16px !important;
+    margin: 0 auto 24px !important;
     display: block !important;
+    background: white !important;
 }
 
 .enterroomfield:focus {
@@ -123,8 +140,8 @@ body, .welcome-page {
     box-shadow: 0 0 0 3px rgba(26,115,232,0.1) !important;
 }
 
-/* ALL BUTTONS - GOOGLE MEET BLUE */
-button, .welcome-page-button, .enterroombutton {
+/* ALL BUTTONS GOOGLE BLUE */
+button, [class*="button"], .enterroombutton {
     background: #1a73e8 !important;
     color: white !important;
     border: none !important;
@@ -139,75 +156,16 @@ button, .welcome-page-button, .enterroombutton {
 
 button:hover {
     background: #1557b0 !important;
-    transform: translateY(-1px) !important;
-}
-
-/* KILL CALENDAR TABS & CARDS */
-.welcome-tabs, .welcome-card, .meetings-list,
-.meetings-list-empty, .tab-container {
-    display: none !important;
-}
-
-/* CARDS - GOOGLE MEET STYLE */
-.welcome-cards-container {
-    display: flex !important;
-    gap: 16px !important;
-    justify-content: center !important;
-    margin-top: 200px !important;
-}
-
-.welcome-card-column {
-    background: #fff !important;
-    border-radius: 24px !important;
-    padding: 40px !important;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
-}
-
-/* TOOLBAR - HIDE OR STYLE */
-.toolbox, .toolbox-button {
-    background: rgba(255,255,255,0.95) !important;
-    backdrop-filter: blur(20px) !important;
-    border-radius: 24px !important;
+    box-shadow: 0 4px 16px rgba(26,115,232,0.4) !important;
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
-    .sidebar-google, .meet-header-google, .meet-subtitle-google,
-    .new-meeting-google, .calendar-google { display: none !important; }
-    #react, .welcome-page { margin-left: 0 !important; }
-}
-
-/* INJECT GOOGLE MEET ELEMENTS */
-body::before {
-    content: '';
-    position: fixed;
-    left: 0; top: 0; bottom: 0; width: 240px;
-    background: #fff;
-    border-right: 1px solid #dadce0;
-    box-shadow: 0 1px 20px rgba(0,0,0,0.08);
-    z-index: 9999;
-}
-
-body::after {
-    content: 'Meetings';
-    position: fixed;
-    left: 24px; top: 24px;
-    font-size: 20px; font-weight: 500; color: #202124;
-    z-index: 10000;
-}
-
-.welcome-page::before {
-    content: 'Messagenius Meet';
-    position: fixed;
-    left: 280px; top: 24px;
-    font-size: 48px; font-weight: 400; color: #202124;
-    z-index: 10000;
-}
-
-.welcome-page::after {
-    content: 'Make meetings happen with one click';
-    position: fixed;
-    left: 280px; top: 88px;
-    font-size: 16px; color: #5f6368;
-    z-index: 10000;
+    body::before, body::after, #react::before { display: none !important; }
+    #react, body > div:first-child { margin-left: 0 !important; padding: 80px 20px 20px !important; }
+    .welcome-page::before { 
+        left: 20px !important; 
+        font-size: 32px !important; 
+        top: 16px !important;
+    }
 }
