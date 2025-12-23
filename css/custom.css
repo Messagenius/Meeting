@@ -297,21 +297,32 @@ body.conference .mg-header {
     margin: 0 !important;
     border: none !important;
 }
+/* Header left: lay out in a row with equal spacing */
 .mg-header-left {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important; /* spaces button, logo, text */
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;          /* space between hamburger, logo, text */
 }
 
-.mg-logo-image {
-  width: 32px !important;
-  height: 32px !important;
-  background-image: url('images/watermark.svg') !important;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
+/* Logo block exactly in the middle */
+.mg-header-left .mg-logo-image {
+    width: 32px !important;
+    height: 32px !important;
+    background-image: url('images/watermark.svg') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    margin: 0 !important;          /* remove right-only margin */
+}
+
+/* Text next to logo */
+.mg-logo-text {
+    display: flex !important;
+    align-items: center !important;
+    color: #ffffff !important;
+    font-size: 1.1rem !important;
+    text-decoration: none !important;
 }
 
 .mg-logo-title {
-  font-weight: 400;
-  margin-left: 4px;
+    font-weight: 400 !important;
 }
