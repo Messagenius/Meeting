@@ -282,3 +282,13 @@ body.conference .toolbox-icon {
 .videocontainer .toolbox {
     overflow: visible !important;
 }
+body.conference .mg-header,
+body.conference .mg-header-left,
+body.conference .mg-header-right,
+body.conference #mg-time {
+    display: none !important;
+}
+
+body.conference #mg-jitsi-root {
+    padding-top: 0 !important;
+}
