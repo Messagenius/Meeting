@@ -233,3 +233,32 @@ body.sidebar-open .welcome {
 #react, .welcome, #mg-jitsi-root .mg-main-content {
     margin-top: 64px !important;
 }
+/* REMOVE old standalone hamburger positioning */
+.mg-hamburger-toggle {
+    position: static !important;  /* Now inside header flow */
+    margin-right: 12px !important;
+    background: rgba(255,255,255,0.1) !important;  /* Subtle in header */
+    border-radius: 8px !important;
+    padding: 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+.mg-hamburger-toggle:hover {
+    background: rgba(255,255,255,0.2) !important;
+    transform: scale(1.1) !important;
+}
+
+/* Logo image styling */
+.mg-logo-image {
+    display: block !important;
+    flex-shrink: 0 !important;
+}
+
+/* Text logo */
+.mg-logo-text {
+    color: white !important;
+    font-size: 1.1rem !important;
+    text-decoration: none !important;
+    display: flex !important;
+    align-items: center !important;
+}

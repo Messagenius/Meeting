@@ -233,12 +233,23 @@
     <!-- MESSAGENIUS HEADER - Google Meet Style -->
     <div class="mg-header">
         <div class="mg-header-left">
-            <!-- Hamburger already exists above -->
-            <a href="/" class="mg-logo">
-                <span></span>
+        <!-- 1. Hamburger Button INSIDE header -->
+            <div class="mg-hamburger-toggle">
+                <svg class="mg-hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                </svg>
+            </div>
+            
+            <!-- 2. Watermark Logo Image -->
+            <div class="mg-logo-image watermark leftwatermark no-margin" style="background-image: url('images/watermark.svg'); width: 32px; height: 32px; background-size: contain; background-repeat: no-repeat; margin-right: 8px;"></div>
+            
+            <!-- 3. Messagenius Meet Text -->
+            <a href="/" class="mg-logo-text">
+                <span style="font-weight: 700;">Messagenius</span>
                 <span style="font-weight: 400; margin-left: 4px;">Meet</span>
             </a>
         </div>
+
         
         <div class="mg-header-right">
             <div class="mg-time" id="mg-time">
@@ -252,11 +263,7 @@
     <!--#include virtual="body.html" -->
     <div id="react"></div>
     <!-- STANDALONE HAMBURGER BUTTON - Google Meet Style -->
-    <div class="mg-hamburger-toggle" style="position:fixed; top:20px; left:20px; z-index:1001; background:rgba(31,41,55,0.95); border-radius:12px; padding:16px; cursor:pointer; backdrop-filter:blur(20px); box-shadow:0 4px 20px rgba(0,0,0,0.3);">
-        <svg class="mg-hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="white">
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-        </svg>
-    </div>
+    
 
     <div id="mg-jitsi-root" class="mg-main-container">
         <aside class="mg-sidebar">
