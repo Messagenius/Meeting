@@ -307,11 +307,10 @@ body.conference .mg-header {
 .mg-header-left .mg-logo-image {
     width: 32px !important;
     height: 32px !important;
-    background-image: url('images/watermark.svg') !important;
+    background-image: url('images/messagenius-logo.png') !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
-    margin-left: 8px !important;  /* more space between button and logo */
-    margin-right: 4px !important; /* small space before "Meet" */
+    background-position: center !important;
 }
 
 /* Text next to logo */
