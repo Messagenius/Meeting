@@ -302,3 +302,41 @@ body.conference .mg-header {
     margin: 0 !important;
     border: none !important;
 }
+
+
+/* Sidebar nav list */
+.mg-nav-list {
+    list-style: none;
+    margin: 16px 0 0 0;
+    padding: 0;
+}
+
+/* Nav items */
+.mg-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #e5e7eb;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.mg-nav-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.mg-nav-item.mg-nav-active {
+    background: rgba(59, 130, 246, 0.18);
+    color: #ffffff;
+}
+
+/* Icon + label */
+.mg-nav-icon.material-icons {
+    font-size: 20px;
+}
+
+.mg-nav-label {
+    white-space: nowrap;
+}

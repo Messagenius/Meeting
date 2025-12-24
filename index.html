@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/css/custom.css">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="stylesheet" href="css/all.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!--#include virtual="fonts.html"-->
     <link rel="manifest" id="manifest-placeholder">
 
@@ -268,14 +270,21 @@
         <div id="mg-jitsi-root" class="mg-main-container">
             <aside class="mg-sidebar">
                 <div class="mg-sidebar-header">
-                <div class="mg-main-menu" role="button" tabindex="0" aria-label="Main menu">
-                    <svg class="mg-main-menu-icon" focusable="false" viewBox="0 0 24 24">
-                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                    </svg>
-                    <div><span class="mg-logo-text">Messagenius Meet</span></div>
-                </div>
-                <button class="mg-nav-item mg-nav-active">Meetings</button>
-                <button class="mg-nav-item">Calls</button>
+                    <div class="mg-main-menu" role="button" tabindex="0" aria-label="Main menu">
+                        <!-- existing icon + Messagenius Meet text -->
+                        ...
+                    </div>
+
+                    <ul class="mg-nav-list" role="listbox">
+                        <li class="mg-nav-item mg-nav-active" role="option" aria-selected="true">
+                            <span class="mg-nav-icon material-icons">event</span>
+                            <span class="mg-nav-label">Meetings</span>
+                        </li>
+                        <li class="mg-nav-item" role="option" aria-selected="false">
+                            <span class="mg-nav-icon material-icons">videocam</span>
+                            <span class="mg-nav-label">Calls</span>
+                        </li>
+                    </ul>
                 </div>
             </aside>
             <main class="mg-main-content">
