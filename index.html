@@ -264,6 +264,39 @@
                 </svg>
             </div>
         </div>
+        <!-- NEW: Hero Section BEFORE React -->
+        <div class="mg-hero-wrapper">
+            <div class="mg-hero-section">
+                <h1 class="mg-hero-title">Video calls and meetings for everyone</h1>
+                <div class="mg-hero-subtitle">
+                    Connect, collaborate, and celebrate from anywhere with <span style="white-space: nowrap;">Messagenius Meet</span>
+                </div>
+
+                <div class="mg-hero-actions">
+                    <!-- New Meeting Button -->
+                    <div class="mg-new-meeting-wrapper">
+                        <button class="mg-btn mg-btn-primary" id="mg-new-meeting-btn">
+                            <span class="material-icons">videocam</span>
+                            <span>New meeting</span>
+                        </button>
+                    </div>
+
+                    <!-- Join Input -->
+                    <div class="mg-join-wrapper">
+                        <div class="mg-input-container">
+                            <span class="material-icons mg-input-icon">keyboard</span>
+                            <input 
+                                type="text" 
+                                class="mg-join-input" 
+                                placeholder="Enter a code or link"
+                                id="mg-join-code"
+                            >
+                        </div>
+                        <button class="mg-btn mg-btn-secondary" id="mg-join-btn">Join</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--#include virtual="body.html" -->
         <div id="react"></div>
         <!-- STANDALONE HAMBURGER BUTTON - Google Meet Style -->

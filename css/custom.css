@@ -360,3 +360,18 @@ body.conference .mg-header {
 .mg-nav-label {
     white-space: nowrap;
 }
+
+/* Hero wrapper - shows on welcome page only */
+.mg-hero-wrapper {
+    padding-top: 80px; /* below header */
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+}
+
+/* Hide hero when in conference */
+body.conference .mg-hero-wrapper {
+    display: none !important;
+}
