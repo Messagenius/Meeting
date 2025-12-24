@@ -336,7 +336,12 @@ body.conference .mg-header {
     font-weight: 400 !important;
 }
 .mg-logo-image {
-    border: 1px solid red !important;
-    background-color: #ffffff !important;
+    width: 32px !important;
+    height: 32px !important;
     background-image: url('images/messagenius-logo.png') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    border: none !important;
+    background-color: transparent !important;
 }
