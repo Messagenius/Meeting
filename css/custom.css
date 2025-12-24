@@ -304,6 +304,12 @@ body.conference .mg-header {
 }
 
 
+.material-icons {
+    font-family: 'Material Icons' !important;
+    font-size: 20px;
+}
+
+
 /* Sidebar nav list */
 .mg-nav-list {
     list-style: none;
