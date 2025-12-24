@@ -181,7 +181,7 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
     gap: 16px !important;
 }
 
-.mg-logo {
+.mg-logo-image {
     display: flex !important;
     align-items: center !important;
     color: white !important;
