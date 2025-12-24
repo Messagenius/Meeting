@@ -236,7 +236,7 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
 .mg-logo-image {
     width: 32px !important;
     height: 32px !important;
-    background-image: url('images/messagenius-logo.png') !important;
+    background-image: url('/images/messagenius-logo.png') !important;
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
