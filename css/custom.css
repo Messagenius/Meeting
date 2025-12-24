@@ -253,6 +253,14 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
     align-items: center !important;
 }
 
+/* Push main content to the right when sidebar is open */
+body.sidebar-open #react,
+body.sidebar-open .welcome,
+body.sidebar-open #mg-jitsi-root .mg-main-content {
+    margin-left: 280px !important;
+    transition: margin-left 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
 /* ✅ FIXED - Use Jitsi classes */
 body.conference .mg-header,
 body.conference .mg-hamburger-toggle,
