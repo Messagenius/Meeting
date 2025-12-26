@@ -44,7 +44,7 @@ jobs:
           echo "✅ Image pushed: ${{ env.DOCKER_IMAGE }}:latest"
 
       - name: 🚀 Deploy to Hetzner K8s
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.4
         with:
           host: ${{ secrets.HETZNER_HOST }}
           username: root
