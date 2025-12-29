@@ -447,3 +447,46 @@ body.conference .mg-header {
 .welcome-page-button:hover {
     background: #1765cc !important;
 }
+
+/* FIX: Remove white background on hamburger click */
+.mg-hamburger-toggle:focus,
+.mg-hamburger-toggle:active,
+.mg-hamburger-toggle:focus-visible {
+    background: transparent !important;
+    outline: none !important;
+}
+
+/* Update hamburger styles for Google Meet look */
+.mg-hamburger-toggle {
+    background: transparent !important;
+    border-radius: 50% !important;
+    padding: 12px !important;
+    transition: background-color 0.15s ease !important;
+    position: static !important;
+    margin-right: 12px !important;
+}
+
+.mg-hamburger-toggle:hover {
+    background: rgba(60, 64, 67, 0.08) !important;
+    transform: none !important;
+}
+
+.mg-hamburger-toggle:active {
+    background: rgba(60, 64, 67, 0.12) !important;
+}
+
+/* Keep hamburger icon gray/dark on all states */
+.mg-hamburger-icon {
+    fill: #5f6368 !important;
+}
+
+.mg-hamburger-toggle:hover .mg-hamburger-icon,
+.mg-hamburger-toggle:focus .mg-hamburger-icon,
+.mg-hamburger-toggle:active .mg-hamburger-icon {
+    fill: #202124 !important;
+}
+
+/* Fix Meet title color */
+.mg-logo-title {
+    color: #202124 !important;
+}
