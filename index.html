@@ -280,11 +280,22 @@
                     </div>
 
                     <ul class="mg-nav-list" role="listbox">
-                        <li class="mg-nav-item mg-nav-active" role="option" aria-selected="true">
-                            <span class="material-icons mg-nav-icon">event</span>
-                            <span class="mg-nav-label">Meetings</span>
+                        <li class="mg-nav-item mg-nav-active" 
+                            role="option" 
+                            aria-selected="true" 
+                            tabindex="0"
+                            data-view="meetings">
+                            <span class="mg-nav-ripple"></span>
+                            <span class="mg-nav-state-layer"></span>
+                            <span class="mg-nav-icon-container">
+                                <i class="material-icons mg-nav-icon" aria-hidden="true">videocam</i>
+                            </span>
+                            <span class="mg-nav-label-container">
+                                <span class="mg-nav-label">Meetings</span>
+                            </span>
                         </li>
                     </ul>
+
                 </div>
             </aside>
             <main class="mg-main-content">
