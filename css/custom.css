@@ -83,7 +83,7 @@ body.welcome-page,
 #mg-jitsi-root .mg-sidebar {
     width: 280px !important;
     min-width: 280px !important;
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%) !important;
     transform: translateX(-100%) !important; /* HIDDEN by default */
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
     position: fixed !important;
@@ -165,7 +165,7 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
     left: 0 !important;
     right: 0 !important;
     height: 64px !important;
-    background: linear-gradient(135deg, #1f2937 0%, #111827 100%) !important;
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -184,7 +184,7 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
 .mg-logo-image {
     display: flex !important;
     align-items: center !important;
-    color: white !important;
+    color: rgb(0, 0, 0) !important;
     font-weight: 700 !important;
     font-size: 1.2rem !important;
     text-decoration: none !important;
