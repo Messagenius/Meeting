@@ -195,7 +195,7 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
     display: flex !important;
     align-items: center !important;
     gap: 24px !important;
-    color: #e5e7eb !important;
+    color: #000000 !important;
 }
 
 .mg-time {
@@ -211,7 +211,7 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
 }
 
 .mg-settings:hover {
-    background: rgba(255,255,255,0.1) !important;
+    background: rgba(0, 0, 0, 0.1) !important;
     border-radius: 50% !important;
     padding: 8px !important;
 }
@@ -221,7 +221,7 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
 .mg-hamburger-toggle {
     position: static !important;  /* Now inside header flow */
     margin-right: 12px !important;
-    background: rgba(255,255,255,0.1) !important;  /* Subtle in header */
+    background: rgba(0, 0, 0, 0.1) !important;  /* Subtle in header */
     border-radius: 8px !important;
     padding: 8px !important;
     transition: all 0.2s ease !important;
@@ -246,7 +246,7 @@ body.sidebar-open #mg-jitsi-root .mg-sidebar {
 
 /* Text logo */
 .mg-logo-text {
-    color: white !important;
+    color: rgb(0, 0, 0) !important;
     font-size: 1.1rem !important;
     text-decoration: none !important;
     display: flex !important;
@@ -393,7 +393,7 @@ body.conference .mg-header {
 }
 
 .header-text-subtitle::before {
-    content: "Connect, collaborate, and celebrate from anywhere with Messagenius Meet" !important;
+    content: "Connect, collaborate, and celebrate from anywhere with Meet" !important;
     display: block !important;
     font-size: 1.125rem !important;
     color: #5f6368 !important;
