@@ -201,6 +201,7 @@ spec:
 
       - name: web
         image: sanketnawale/meetings-web:v2.1
+        imagePullPolicy: Always
         env:
         - {name: XMPP_DOMAIN, value: meet.jitsi}
         - {name: XMPP_BOSH_URL_BASE, value: "http://127.0.0.1:5280"}
@@ -221,7 +222,7 @@ spec:
 
       # ✅ JVB #1 (Port 30300)
       - name: jvb-1
-        image: cloudnova/jvb:stable-9457
+        image: sanketnawale/meet-jvb:v1.0
         env:
         - {name: XMPP_SERVER, value: "localhost"}
         - {name: DOCKER_HOST_ADDRESS, value: "${PUBLIC_IP}"}
@@ -244,7 +245,7 @@ spec:
 
       # ✅ JVB #2 (Port 30301) - NEW!
       - name: jvb-2
-        image: cloudnova/jvb:stable-9457
+        image: sanketnawale/meet-jvb:v1.0
         env:
         - {name: XMPP_SERVER, value: "localhost"}
         - {name: DOCKER_HOST_ADDRESS, value: "${PUBLIC_IP}"}
