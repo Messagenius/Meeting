@@ -152,6 +152,31 @@ Auto-deploys to meetiing.duckdns.org:30080/ (~5 min)
 
 **GitHub Actions:** https://github.com/Messagenius/Meeting/actions
 
+# Install MicroK8s
+sudo snap install microk8s --classic --channel=1.28/stable
+
+# Add user to microk8s group
+sudo usermod -a -G microk8s $USER
+sudo chown -f -R $USER ~/.kube
+newgrp microk8s
+
+# Enable required addons
+microk8s enable dns
+microk8s enable ingress
+microk8s enable storage
+
+# Verify installation
+microk8s kubectl get nodes
+
+# Open required ports
+sudo ufw allow 80/tcp      # HTTP
+sudo ufw allow 443/tcp     # HTTPS
+sudo ufw allow 30300/udp   # JVB video/audio
+sudo ufw enable
+
+# Verify ports
+sudo ufw status
+
 **Hetzner Kubernetes:**
 kubectl get pods -n jitsi
 kubectl rollout status deployment/jitsi-web -n jitsi

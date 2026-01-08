@@ -75,7 +75,7 @@ data:
             muc: 'muc.meet.jitsi',
             focus: 'focus.meet.jitsi'
         },
-        bosh: '//meetnovalink.in/http-bind',
+        bosh: '//meetxyz.com/http-bind',
         websocket: null,
         openBridgeChannel: 'datachannel',
         p2p: { enabled: false },
