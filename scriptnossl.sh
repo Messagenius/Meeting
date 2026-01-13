@@ -8,9 +8,10 @@ set -e
 
 # CONFIGURATION - CHANGE THESE VALUES
 # ==============================================
-PUBLIC_IP="meetiing.duckdns.org"          # ← CHANGE THIS to your server IP or domain
+PUBLIC_HOST="yellow.meetings.messagenius.dev"
+PUBLIC_IP="77.42.69.64"          # ← CHANGE THIS to your server IP or domain
 NAMESPACE="jitsi"
-WEB_PORT=30080
+WEB_PORT=80
 JVB_PORT=30300
 
 # Colors for output
@@ -28,25 +29,32 @@ echo -e "Web Port: ${YELLOW}${WEB_PORT}${NC}"
 echo -e "JVB UDP Port: ${YELLOW}${JVB_PORT}${NC}"
 echo ""
 
-# Delete existing namespace
-echo -e "${YELLOW}Deleting existing namespace...${NC}"
-kubectl delete namespace ${NAMESPACE} --ignore-not-found=true
-sleep 5
+# Enable MicroK8s addons (CRITICAL!)
+echo -e "${GREEN}Enabling MicroK8s addons...${NC}"
+microk8s enable dns ingress cert-manager >/dev/null 2>&1 || true
+sleep 60
 
-# Create namespace
-echo -e "${GREEN}Creating namespace...${NC}"
-kubectl create namespace ${NAMESPACE}
+
+# Namespace (CREATE ONLY IF MISSING - SAFE!)
+microk8s kubectl create namespace ${NAMESPACE} --dry-run=client -o yaml | \
+  microk8s kubectl apply -f - || true
 
 # Generate secrets
-echo -e "${GREEN}Generating secrets...${NC}"
-kubectl create secret generic jitsi-config -n ${NAMESPACE} \
-  --from-literal=JICOFO_COMPONENT_SECRET=$(openssl rand -hex 16) \
-  --from-literal=JICOFO_AUTH_PASSWORD=$(openssl rand -hex 16) \
-  --from-literal=JVB_AUTH_PASSWORD=$(openssl rand -hex 16)
+# ✅ WITH THIS (safe forever):
+echo -e "${GREEN}Ensuring jitsi-config secret...${NC}"
+if ! microk8s kubectl -n "${NAMESPACE}" get secret jitsi-config >/dev/null 2>&1; then
+  microk8s kubectl create secret generic jitsi-config -n "${NAMESPACE}" \
+    --from-literal=JICOFO_COMPONENT_SECRET="$(openssl rand -hex 16)" \
+    --from-literal=JICOFO_AUTH_PASSWORD="$(openssl rand -hex 16)" \
+    --from-literal=JVB_AUTH_PASSWORD="$(openssl rand -hex 16)"
+else
+  echo -e "${YELLOW}✅ Keeping existing secrets (JVB2 safe!)${NC}"
+fi
+# Deploy Jitsi + HTTPS
 
 # Deploy Jitsi
 echo -e "${GREEN}Deploying Jitsi Meet...${NC}"
-kubectl apply -f - <<EOF
+microk8s kubectl apply -f - <<EOF
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -74,7 +82,7 @@ data:
             muc: 'muc.meet.jitsi',
             focus: 'focus.meet.jitsi'
         },
-        bosh: '//${PUBLIC_IP}:${WEB_PORT}/http-bind',
+        bosh: '//yellow.meetings.messagenius.dev/http-bind',
         websocket: null,
         openBridgeChannel: 'datachannel',
         p2p: { enabled: false },
@@ -86,13 +94,24 @@ data:
                 height: { ideal: 360, max: 720, min: 180 }
             }
         },
+        // == Disable mobile app detection===
+        mobileAppPromo: false,
+        // Deep link settings (prevents app prompts)
+        appScheme: false,
+        disableDeepLinking: true,   // ← Force web UI
+        enableWelcomePage: true,    // ← Show first page
         disableAudioLevels: false,
         startAudioOnly: false,
         startWithAudioMuted: false,
         startWithVideoMuted: false,
+        // === WHITEBOARD INTEGRATION ===
+        whiteboard: {
+        enabled: true,
+        collabServerBaseUrl: 'http://excalidraw.${NAMESPACE}.svc.cluster.local:3002'        
+        },
         // === CALENDAR INTEGRATION ===
         enableCalendarIntegration: true,
-        googleApiApplicationClientID: "590796445758-2stknbg4evs62cm8kmsenm3v42ftva0p.apps.googleusercontent.com"
+        googleApiApplicationClientID: "AIzaSyC1PMcT0o_Q0ycj1pYS6eNJUBYp2L-FqVY"
     };
   fix-config.sh: |
     #!/bin/bash
@@ -106,14 +125,40 @@ metadata:
   name: web
   namespace: ${NAMESPACE}
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     k8s-app: jitsi
   ports:
   - name: http
     port: 80
     targetPort: 80
-    nodePort: ${WEB_PORT}
+   # nodePort: 80
+   ---
+# Keep your existing Ingress but REMOVE cert-manager annotation:
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jitsi-web
+  namespace: ${NAMESPACE}
+spec:                    # ← NO annotations section = NO cert-manager trigger!
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - ${PUBLIC_HOST}
+    secretName: yellow-tls     # ← Uses your EXISTING cert!
+  rules:
+  - host: ${PUBLIC_HOST}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web
+            port:
+              number: 80
+
+
 ---
 apiVersion: v1
 kind: Service
@@ -130,25 +175,42 @@ spec:
     protocol: UDP
     targetPort: ${JVB_PORT}
     nodePort: ${JVB_PORT}
-
-#for second JVB
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: jvb-udp-2  # ← NEW SERVICE
+  name: excalidraw
+  namespace: ${NAMESPACE}
+spec:
+  type: ClusterIP
+  selector:
+    k8s-app: jitsi
+  ports:
+  - name: http
+    port: 3002
+    targetPort: 3002
+
+# ADD THIS BLOCK right before "apiVersion: apps/v1" Deployment section:
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prosody-xmpp
   namespace: ${NAMESPACE}
 spec:
   type: NodePort
-  externalTrafficPolicy: Cluster
   selector:
-    k8s-app: jitsi  # Same selector
-    name: jvb-2
+    k8s-app: jitsi
   ports:
-  - port: 30301     # ← Port 30301
-    protocol: UDP
-    targetPort: 30301
-    nodePort: 30301
+  - name: xmpp-c2s
+    port: 5222
+    targetPort: 5280     # ← Prosody BOSH port in your container
+    nodePort: 30222
+  - name: xmpp-s2s
+    port: 5269
+    targetPort: 5280     # ← Same port
+    nodePort: 30269
 
 ---
 apiVersion: apps/v1
@@ -166,6 +228,8 @@ spec:
       labels:
         k8s-app: jitsi
     spec:
+    #  hostNetwork: true  # ← ADD HERE (pod level)
+    #  dnsPolicy: ClusterFirstWithHostNet  # Required with hostNetwork
       containers:
       - name: jicofo
         image: sanketnawale/meet-jicofo:v1.0
@@ -178,9 +242,9 @@ spec:
         - {name: JICOFO_AUTH_USER, value: focus}
         - {name: JVB_BREWERY_MUC, value: jvbbrewery}
         - name: JICOFO_COMPONENT_SECRET
-          valueFrom: {secretKeyRef: {name: jitsi-config, key: JICOFO_COMPONENT_SECRET}}
+          valueFrom: {secretKeyRef: {name: jitsi-config, key: JICOFO_COMPONENT_SECRET}}     
         - name: JICOFO_AUTH_PASSWORD
-          valueFrom: {secretKeyRef: {name: jitsi-config, key: JICOFO_AUTH_PASSWORD}}
+          valueFrom: {secretKeyRef: {name: jitsi-config, key: JICOFO_AUTH_PASSWORD}}        
 
       - name: prosody
         image: sanketnawale/meet-prosody:v1.0
@@ -193,16 +257,17 @@ spec:
         - {name: JICOFO_AUTH_USER, value: focus}
         - {name: ENABLE_AUTH, value: "0"}
         - name: JICOFO_COMPONENT_SECRET
-          valueFrom: {secretKeyRef: {name: jitsi-config, key: JICOFO_COMPONENT_SECRET}}
+          valueFrom: {secretKeyRef: {name: jitsi-config, key: JICOFO_COMPONENT_SECRET}}     
         - name: JVB_AUTH_PASSWORD
           valueFrom: {secretKeyRef: {name: jitsi-config, key: JVB_AUTH_PASSWORD}}
         - name: JICOFO_AUTH_PASSWORD
-          valueFrom: {secretKeyRef: {name: jitsi-config, key: JICOFO_AUTH_PASSWORD}}
+          valueFrom: {secretKeyRef: {name: jitsi-config, key: JICOFO_AUTH_PASSWORD}}        
         ports:
         - {containerPort: 5280}
 
       - name: web
-        image: sanketnawale/meetings-web:v2.1
+        image: sanketnawale/meetings-web:latest
+        imagePullPolicy: Always
         env:
         - {name: XMPP_DOMAIN, value: meet.jitsi}
         - {name: XMPP_BOSH_URL_BASE, value: "http://127.0.0.1:5280"}
@@ -221,11 +286,10 @@ spec:
         - name: web-config
           mountPath: /tmp/config-override
 
-      # ✅ JVB #1 (Port 30300)
-      - name: jvb-1
-        image: cloudnova/jvb:stable-9457
+      - name: jvb
+        image: sanketnawale/meet-jvb:v1.0
         env:
-        - {name: XMPP_SERVER, value: "localhost"}
+        - {name: XMPP_SERVER, value: localhost}
         - {name: DOCKER_HOST_ADDRESS, value: "${PUBLIC_IP}"}
         - {name: XMPP_DOMAIN, value: meet.jitsi}
         - {name: XMPP_AUTH_DOMAIN, value: auth.meet.jitsi}
@@ -233,40 +297,29 @@ spec:
         - {name: JVB_STUN_SERVERS, value: "stun.l.google.com:19302"}
         - {name: JVB_AUTH_USER, value: jvb}
         - {name: JVB_BREWERY_MUC, value: jvbbrewery}
-        - {name: JVB_PORT, value: "30300"}
+        - {name: JVB_PORT, value: "${JVB_PORT}"}
         - {name: JVB_ADVERTISE_IPS, value: "${PUBLIC_IP}"}
+        - {name: ENABLE_COLIBRI_WEBSOCKET, value: "false"}
         - name: JVB_AUTH_PASSWORD
           valueFrom: {secretKeyRef: {name: jitsi-config, key: JVB_AUTH_PASSWORD}}
         ports:
-        - {containerPort: 30300, protocol: UDP}
+        - {containerPort: ${JVB_PORT}, protocol: UDP}
         volumeMounts:
         - name: jvb-config
           mountPath: /config/sip-communicator.properties
           subPath: custom-sip-communicator.properties
-
-      # ✅ JVB #2 (Port 30301) - NEW!
-      - name: jvb-2
-        image: cloudnova/jvb:stable-9457
+      - name: excalidraw
+        image: jitsi/excalidraw-backend:latest
         env:
-        - {name: XMPP_SERVER, value: "localhost"}
-        - {name: DOCKER_HOST_ADDRESS, value: "${PUBLIC_IP}"}
-        - {name: XMPP_DOMAIN, value: meet.jitsi}
-        - {name: XMPP_AUTH_DOMAIN, value: auth.meet.jitsi}
-        - {name: XMPP_INTERNAL_MUC_DOMAIN, value: internal-muc.meet.jitsi}
-        - {name: JVB_STUN_SERVERS, value: "stun.l.google.com:19302"}
-        - {name: JVB_AUTH_USER, value: jvb}
-        - {name: JVB_BREWERY_MUC, value: jvbbrewery}
-        - {name: JVB_PORT, value: "30301"}  # ← DIFFERENT PORT!
-        - {name: JVB_ADVERTISE_IPS, value: "${PUBLIC_IP}"}
-        - name: JVB_AUTH_PASSWORD
-          valueFrom: {secretKeyRef: {name: jitsi-config, key: JVB_AUTH_PASSWORD}}
+        - name: EXCALIDRAW_API_KEY
+          value: "jitsi-whiteboard-secret"
+        - name: PORT
+          value: "3002"
+        - name: PROMETHEUS_PORT
+          value: "9091"
         ports:
-        - {containerPort: 30301, protocol: UDP}  # ← DIFFERENT PORT!
-        volumeMounts:
-        - name: jvb-config
-          mountPath: /config/sip-communicator.properties
-          subPath: custom-sip-communicator.properties
-
+        - containerPort: 3002
+        - containerPort: 9091
 
       volumes:
       - name: web-config
@@ -276,3 +329,4 @@ spec:
       - name: jvb-config
         configMap:
           name: jvb-config
+EOF
