@@ -50,16 +50,11 @@ jobs:
           username: root
           key: ${{ secrets.HETZNER_SSH_KEY }}
           script: |
-            export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-            
             echo "🔄 Updating image to ${{ env.DOCKER_IMAGE }}:${{ env.IMAGE_TAG }}"
-            kubectl set image deployment/jitsi web=${{ env.DOCKER_IMAGE }}:${{ env.IMAGE_TAG }} -n jitsi
-            
+            microk8s kubectl set image deployment/jitsi web=${{ env.DOCKER_IMAGE }}:${{ env.IMAGE_TAG }} -n jitsi
             echo "⏳ Waiting for rollout..."
-            kubectl rollout status deployment/jitsi -n jitsi --timeout=300s
-            
+            microk8s kubectl rollout status deployment/jitsi -n jitsi --timeout=300s
             echo "✅ Deployment complete!"
-            kubectl get pods -n jitsi
-
+            microk8s kubectl get pods -n jitsi
       - name: ✅ Deployment Status
         run: echo "🎉 Jitsi deployed successfully to http://${{ secrets.HETZNER_HOST }}:30080"
